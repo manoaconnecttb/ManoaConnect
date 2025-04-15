@@ -12,3 +12,19 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.make-post-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+  
+.make-post-button {
+  width: 60px; /* Adjust as needed */
+  transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+}
+
+.make-post-button:hover {
+  filter: brightness(0.8);
+  transform: scale(1.1);
+}
