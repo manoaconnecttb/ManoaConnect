@@ -7,12 +7,12 @@ import PostCard from '@/components/PostCard';
 
 const HomePage = async () => {
   // Protect the page, only logged in users can access it.
-  // const session = await getServerSession(authOptions);
-  // loggedInProtectedPage(
-  //   session as {
-  //     user: { email: string; id: string; randomKey: string };
-  //   } | null,
-  // );
+  const session = await getServerSession(authOptions);
+  loggedInProtectedPage(
+    session as {
+      user: { email: string; id: string; randomKey: string };
+    } | null,
+  );
 
   const mockPosts = Array.from({ length: 3 }, (_, i) => ({
     id: i + 1,
