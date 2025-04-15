@@ -1,20 +1,29 @@
-import { Col, Container, Image, Row } from 'react-bootstrap';
+'use client';
 
-/** The Home page. */
-const Home = () => (
-  <main>
-    <Container id="landing-page" fluid className="py-3">
-      <Row className="align-middle text-center">
-        <Col xs={4}>
-          <Image src="next.svg" width="150px" alt="" />
-        </Col>
+import React from 'react';
+import { Container } from 'react-bootstrap';
+import PhotoSwitcher from '@/components/PhotoSwitcher';
+import AddClubPrompt from '@/components/AddClubPrompt'; // 引入组件
 
-        <Col xs={8} className="d-flex flex-column justify-content-center">
-          <h1>Welcome to ManoaConnect</h1>
-        </Col>
-      </Row>
-    </Container>
-  </main>
-);
+const Home = () => {
+  const imageList = [
+    { src: '/ACM.jpg', alt: 'ACM' },
+    { src: '/ACM.jpg', alt: 'Image 2' },
+    { src: '/ACM.jpg', alt: 'Image 3' },
+    { src: '/ACM.jpg', alt: 'Image 4' },
+    { src: '/ACM.jpg', alt: 'Image 5' },
+    { src: '/ACM.jpg', alt: 'Image 6' },
+  ];
+
+  return (
+    <main>
+      <Container className="py-3">
+        <PhotoSwitcher images={imageList} size={{ width: 1000, height: 600 }} />
+
+        <AddClubPrompt />
+      </Container>
+    </main>
+  );
+};
 
 export default Home;
