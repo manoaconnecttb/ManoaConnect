@@ -20,11 +20,16 @@ body {
 }
 
 .navbar {
-  --bs-navbar-active-color: var(--highlight-text);
-  --bs-navbar-brand-color: var(--text-color);
-  --bs-navbar-brand-hover-color: var(--highlight-text);
-  --bs-navbar-color: var(--text-color);
-  --bs-navbar-hover-color: var(--highlight-text);
+  --bs-navbar-active-color: var(--highlight-text)!important;
+  --bs-navbar-brand-color: var(--text-color)!important;
+  --bs-navbar-brand-hover-color: var(--highlight-text)!important;
+  --bs-navbar-color: var(--text-color)!important;
+  --bs-navbar-hover-color: var(--highlight-text)!important;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .wrapper {
