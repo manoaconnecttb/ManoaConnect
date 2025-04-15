@@ -14,7 +14,12 @@ const NavBar: React.FC = () => {
   return (
     <Navbar bg="dark" expand="lg">
       <Container>
-        <Navbar.Brand href="/">ManoaConnect</Navbar.Brand>
+        <Navbar.Brand
+          href="/"
+          className="mx-auto text-center position-absolute top-50 start-50 translate-middle"
+        >
+          Manoa Connect
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">

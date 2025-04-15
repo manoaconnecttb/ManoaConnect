@@ -15,7 +15,7 @@ const Sidebar = () => (
         height={40}
         style={{ borderRadius: '50%' }}
       />
-      <h2>Manoa Connect</h2>
+      <h2>Main Menu</h2>
     </div>
     <ul className="sidebar-links">
       <li>
