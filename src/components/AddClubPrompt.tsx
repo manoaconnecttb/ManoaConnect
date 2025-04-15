@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Button, Container, Modal } from 'react-bootstrap';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const AddClubPrompt: React.FC = () => {
   const [show, setShow] = useState(false);
@@ -19,12 +20,10 @@ const AddClubPrompt: React.FC = () => {
 
   return (
     <Container className="py-3 text-center">
-      {/* Create Club Image Button */}
       <Button variant="link" onClick={handleShow} className="p-0 border-0 bg-transparent">
-        <img src="/PostButton.png" alt="Create Club" style={{ width: '120px' }} />
+        <Image src="/PostButton.png" alt="Create Club" width={120} height={120} />
       </Button>
 
-      {/* Modal prompting login */}
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Not Signed In</Modal.Title>

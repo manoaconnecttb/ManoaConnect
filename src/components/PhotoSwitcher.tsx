@@ -1,32 +1,33 @@
 'use client';
+
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
+import Image from 'next/image';
 
 interface PhotoSwitcherProps {
   images: { src: string; alt: string }[];
   size?: { width: number; height: number };
 }
 
-const PhotoSwitcher: React.FC<PhotoSwitcherProps> = ({ images, size }) => {
-  return (
-    <Carousel>
-      {images.map((img, idx) => (
-        <Carousel.Item key={idx}>
-          <img
+const PhotoSwitcher: React.FC<PhotoSwitcherProps> = ({ images, size = { width: 1000, height: 600 } }) => (
+  <Carousel>
+    {images.map((img) => (
+      <Carousel.Item key={img.src}>
+        <div style={{ textAlign: 'center' }}>
+          <Image
             src={img.src}
             alt={img.alt}
+            width={size.width}
+            height={size.height}
             style={{
-              width: size?.width || '100%',
-              height: size?.height || 'auto',
               objectFit: 'cover',
-              display: 'block',
               margin: '0 auto',
             }}
           />
-        </Carousel.Item>
-      ))}
-    </Carousel>
-  );
-};
+        </div>
+      </Carousel.Item>
+    ))}
+  </Carousel>
+);
 
 export default PhotoSwitcher;
