@@ -1,11 +1,32 @@
+:root {
+  --nat-navbar-bg: #024731;
+  --nat-navbar-bg-color: #024731;
+  --nat-navbar-bg-rgb: 2, 71, 49;
+  --text-color: white;
+  --highlight-text: #dbd4d4e3;
+}
+
 html,
 body {
+  --bs-dark: var(--nat-navbar-bg);
+  --bs-dark-rgb: var(--nat-navbar-bg-rgb);
   --bs-light-rgb: 236, 236, 236;
   box-sizing: border-box;
   height: 100%;
   padding: 0;
   margin: 0;
+  background: fixed center url("/LandingPagePhoto.jpg") no-repeat;
+  background-size: cover;
 }
+
+.navbar {
+  --bs-navbar-active-color: var(--highlight-text);
+  --bs-navbar-brand-color: var(--text-color);
+  --bs-navbar-brand-hover-color: var(--highlight-text);
+  --bs-navbar-color: var(--text-color);
+  --bs-navbar-hover-color: var(--highlight-text);
+}
+
 .wrapper {
   box-sizing: border-box;
   min-height: 100%;
@@ -20,11 +41,80 @@ body {
 }
   
 .make-post-button {
-  width: 60px; /* Adjust as needed */
+  width: 60px;
   transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
 }
 
 .make-post-button:hover {
   filter: brightness(0.8);
   transform: scale(1.1);
+}
+
+  .sidebar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 55px;
+  height: 80%;
+  padding-left: 7px;
+  padding-top: 7px;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  background: #024731;
+  transition: all 0.4s ease;
+}
+
+.sidebar:hover{
+  width: 230px;
+  transition: width 0.3s ease-in-out;
+}
+
+.sidebar-header{
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-header h2{
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  margin-top: 8px;
+  margin-left: 8px;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.sidebar-links li a{
+  color: #dbd4d4e3;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0 20px;
+  padding: 15px 10px;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.sidebar-links{
+  list-style: none;
+  margin-top: 20px;
+  height: 80%;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding-left: 2px;
+}
+
+.sidebar-links h2{
+  opacity: 0;
+}
+
+.sidebar:hover h2{
+  opacity: 1;
+}
+
+.sidebar-links li a:hover{
+  background: #ffffff2d;
+  color: #fff;
+  border-radius: 4px;
 }
