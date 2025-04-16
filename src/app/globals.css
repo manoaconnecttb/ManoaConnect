@@ -139,3 +139,11 @@ body {
   cursor: pointer;
   z-index: 1000;
 }
+
+.feedback-bg {
+  min-height: 100vh;
+  background: fixed center url("/students.png") no-repeat;
+  background-size: cover;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
