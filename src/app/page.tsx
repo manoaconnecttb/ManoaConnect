@@ -4,6 +4,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import PhotoSwitcher from '@/components/PhotoSwitcher';
 import AddClubPrompt from '@/components/AddClubPrompt'; // 引入组件
+import ScrollToTopButton from '@/components/ScrollToTopButton';
 
 const Home = () => {
   const imageList = [
@@ -22,6 +23,7 @@ const Home = () => {
 
         <AddClubPrompt />
       </Container>
+      <ScrollToTopButton />
     </main>
   );
 };
