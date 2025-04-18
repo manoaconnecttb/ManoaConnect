@@ -26,7 +26,7 @@ const HomePage = async () => {
         <h1 className="text-2xl font-bold mb-4 text-gray-800">Posts</h1>
         <div className="space-y-4">
           {mockPosts.map((post) => (
-            <PostCard key={post.id} title={post.title} content={post.content} />
+            <PostCard key={post.id} />
           ))}
         </div>
       </Container>
