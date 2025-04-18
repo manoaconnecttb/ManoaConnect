@@ -20,21 +20,21 @@ const Sidebar = () => (
     </div>
     <ul className="sidebar-links">
       <li>
-        <Link href="/home" className="d-flex align-items-center gap-2">
-          <HouseFill />
-          <span>Home</span>
+        <Link href="/home">
+          <span><HouseFill /></span>
+          Home
         </Link>
       </li>
       <li>
-        <Link href="/following" className="d-flex align-items-center gap-2">
-          <FilePersonFill />
-          <span>Following</span>
+        <Link href="/following">
+          <span><FilePersonFill /></span>
+          Following
         </Link>
       </li>
       <li>
-        <Link href="/explore" className="d-flex align-items-center gap-2">
-          <Search />
-          <span>Explore</span>
+        <Link href="/explore">
+          <span><Search /></span>
+          Explore
         </Link>
       </li>
     </ul>
