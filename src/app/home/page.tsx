@@ -21,9 +21,9 @@ const HomePage = async () => {
   }));
 
   return (
-    <main className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
-      <Container className="w-full max-w-2xl rounded-2xl shadow-xl p-4 overflow-y-auto max-h-[80vh]">
-        <h1>Posts</h1>
+    <main className="flex justify-end items-center min-h-screen bg-gray-100 px-4 py-6">
+      <Container className="w-full max-w-2xl rounded-2xl shadow-xl p-6 overflow-y-auto max-h-[80vh] mr-10 bg-white">
+        <h1 className="text-2xl font-bold mb-4 text-gray-800">Posts</h1>
         <div className="space-y-4">
           {mockPosts.map((post) => (
             <PostCard key={post.id} />
