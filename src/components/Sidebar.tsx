@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { HouseFill, FilePersonFill, Search } from 'react-bootstrap-icons';
 
 const Sidebar = () => (
@@ -19,22 +20,22 @@ const Sidebar = () => (
     </div>
     <ul className="sidebar-links">
       <li>
-        <a href="/">
-          <span><HouseFill /></span>
-          Home
-        </a>
+        <Link href="/home" className="d-flex align-items-center gap-2">
+          <HouseFill />
+          <span>Home</span>
+        </Link>
       </li>
       <li>
-        <a href="/">
-          <span><FilePersonFill /></span>
-          Following
-        </a>
+        <Link href="/following" className="d-flex align-items-center gap-2">
+          <FilePersonFill />
+          <span>Following</span>
+        </Link>
       </li>
       <li>
-        <a href="/">
-          <span><Search /></span>
-          Explore
-        </a>
+        <Link href="/explore" className="d-flex align-items-center gap-2">
+          <Search />
+          <span>Explore</span>
+        </Link>
       </li>
     </ul>
   </aside>
