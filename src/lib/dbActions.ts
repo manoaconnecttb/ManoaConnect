@@ -1,8 +1,9 @@
 'use server';
 
-import { Stuff, Condition } from '@prisma/client';
+import { Stuff, Condition, Post } from '@prisma/client';
 import { hash } from 'bcrypt';
 import { redirect } from 'next/navigation';
+import { DateTime } from 'next-auth/providers/kakao';
 import { prisma } from './prisma';
 
 /**
@@ -61,6 +62,27 @@ export async function deleteStuff(id: number) {
   });
   // After deleting, redirect to the list page
   redirect('/list');
+}
+
+/**
+ * Adds a new stuff to the database.
+ * @param post, an object with the following properties: title, image, author, time, content, likes, comments, owner.
+ */
+export async function makePost(post: {
+  title: string; image: string; author: string;
+  content: string; owner: string }) {
+  // console.log(`addStuff data: ${JSON.stringify(stuff, null, 2)}`);
+  await prisma.post.create({
+    data: {
+      title: post.title,
+      image: post.image,
+      author: post.author,
+      content: post.content,
+      owner: post.owner,
+    },
+  });
+  // After adding, redirect to the home page
+  redirect('/home');
 }
 
 /**
