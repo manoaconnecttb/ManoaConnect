@@ -66,13 +66,15 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  background: #024731;
+  background: #404040;
   transition: all 0.4s ease;
+  opacity: 0.6;
 }
 
 .sidebar:hover{
   width: 230px;
   transition: width 0.3s ease-in-out;
+  opacity: 0.9;
 }
 
 .sidebar-header{
