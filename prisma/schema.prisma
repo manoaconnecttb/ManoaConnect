@@ -37,3 +37,10 @@ model Stuff {
   condition Condition @default(good)
   owner     String
 }
+model Club {
+  id        Int   @id
+  name      String
+  major     String
+  email     String   @unique
+  clubName  String
+}
