@@ -53,11 +53,10 @@ const Sidebar = () => {
                 Feedback
               </Link>
             </li>
-
           </>
         )}
         <li>
-          <Link href="/explore">
+          <Link href="/Explore">
             <span><Search /></span>
             Explore
           </Link>
@@ -75,5 +74,3 @@ const Sidebar = () => {
     </aside>
   );
 };
-
-export default Sidebar;
