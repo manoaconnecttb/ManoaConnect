@@ -75,7 +75,7 @@ const MakePostForm: React.FC = () => {
                       {...register('content')}
                       className={`form-control ${errors.content ? 'is-invalid' : ''}`}
                     />
-                    <div className="invalid-feedback">{errors.image?.message}</div>
+                    <div className="invalid-feedback">{errors.content?.message}</div>
                   </Form.Group>
                   <input type="hidden" {...register('owner')} value={currentUser} />
                   <Form.Group className="form-group">
