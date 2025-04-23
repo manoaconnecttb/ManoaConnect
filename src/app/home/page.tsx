@@ -25,11 +25,11 @@ const HomePage = async () => {
       <Container className="w-full max-w-2xl rounded-2xl shadow-xl p-4 overflow-y-auto max-h-[80vh]">
         <Col>
           <h1>Posts</h1>
-            <Row className="gy-4">
-              {posts.map((post) => (
-                <PostCard post={post} />
-              ))}
-            </Row>
+          <Row className="gy-4">
+            {posts.map((post) => (
+              <PostCard post={post} />
+            ))}
+          </Row>
         </Col>
       </Container>
       <MakePostButton />
