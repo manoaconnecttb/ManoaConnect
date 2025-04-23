@@ -34,7 +34,7 @@ const ClubsPage: React.FC = () => {
         maxWidth: 900,
       }}
     >
-      {/* 顶部 Club 信息 */}
+
       <Row className="align-items-center mb-3">
         <Col xs="auto">
           <Link href="/clubs/profile" style={{ display: 'inline-block' }}>
@@ -55,14 +55,18 @@ const ClubsPage: React.FC = () => {
           </Link>
         </Col>
         <Col className="text-start">
-          <div style={{ fontWeight: 700, fontSize: 24 }}>{CLUB_NAME}</div>
-          <div style={{ fontSize: 16, color: '#888' }}>Member: {MEMBER_COUNT}</div>
+          <div style={{ fontWeight: 700, fontSize: 24 }}>
+            {CLUB_NAME}
+          </div>
+          <div style={{ fontSize: 16, color: '#888' }}>
+            Member:
+            {MEMBER_COUNT}
+          </div>
         </Col>
       </Row>
 
       <hr />
 
-      {/* Navbar */}
       <Nav variant="tabs" defaultActiveKey="post" className="mb-4">
         <Nav.Item>
           <Nav.Link eventKey="post">Post</Nav.Link>
@@ -78,30 +82,36 @@ const ClubsPage: React.FC = () => {
         </Nav.Item>
       </Nav>
 
-      {/* Post 列表 */}
       <div>
         {DUMMY_POSTS.map((post, idx) => (
           <div key={post.id} style={{ marginBottom: 24 }}>
             <Card className="text-start mb-2" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
               <Card.Body>
-                <Card.Title style={{ fontSize: 18 }}>{post.author}</Card.Title>
-                <Card.Text>{post.content}</Card.Text>
+                <Card.Title style={{ fontSize: 18 }}>
+                  {post.author}
+                </Card.Title>
+                <Card.Text>
+                  {post.content}
+                </Card.Text>
               </Card.Body>
             </Card>
-            {idx !== DUMMY_POSTS.length - 1 && <hr style={{ margin: '12px 0' }} />}
+            {idx !== DUMMY_POSTS.length - 1 && (
+              <hr style={{ margin: '12px 0' }} />
+            )}
           </div>
         ))}
       </div>
 
-      {/* 右下角 Create Club 按钮 */}
-      <div style={{
-        position: 'fixed',
-        right: 40,
-        bottom: 40,
-        zIndex: 1000,
-        width: 48,
-        height: 48,
-      }}>
+      <div
+        style={{
+          position: 'fixed',
+          right: 40,
+          bottom: 40,
+          zIndex: 1000,
+          width: 48,
+          height: 48,
+        }}
+      >
         <AddClubFormModal onAddClub={handleAddClub} />
       </div>
     </Container>

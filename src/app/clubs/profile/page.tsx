@@ -4,10 +4,12 @@ import React from 'react';
 import Image from 'next/image';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
-const CLUB_AVATAR =
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2azfqh_qr52MOAohFAngj9TyxfdHFYG5Kw&s';
+// eslint-disable-next-line max-len
+const CLUB_AVATAR = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2azfqh_qr52MOAohFAngj9TyxfdHFYG5Kw&s';
+// eslint-disable-next-line max-len
 const MEMBERS = [
   'https://pic2.zhimg.com/v2-c21606cc260d1e83272a3b3243a2ff17_1440w.jpg',
+  // eslint-disable-next-line max-len
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOgWy4XWbdQYgjwLNcVpkYiP98mVp2C_D851s5QSxf3dHce0H0ylFkvoDqw17QZfGPda0&usqp=CAU',
 ];
 
@@ -44,11 +46,11 @@ export default function ClubProfilePage() {
       <div className="mb-4">
         <h5>Members</h5>
         <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-          {MEMBERS.map((url, idx) => (
+          {MEMBERS.map((url) => (
             <Image
-              key={idx}
+              key={url}
               src={url}
-              alt={`Member ${idx + 1}`}
+              alt="Member"
               width={56}
               height={56}
               style={{
@@ -70,8 +72,8 @@ export default function ClubProfilePage() {
       <div className="mb-4">
         <h5>Activity</h5>
         <ul>
-          {ACTIVITIES.map((item, i) => (
-            <li key={i}>{item}</li>
+          {ACTIVITIES.map((item) => (
+            <li key={item}>{item}</li>
           ))}
         </ul>
       </div>

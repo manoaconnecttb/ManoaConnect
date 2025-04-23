@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
@@ -31,17 +32,23 @@ const AddClubFormModal: React.FC<AddClubFormModalProps> = ({ onAddClub }) => {
 
   return (
     <>
-      <Button variant="link" onClick={handleOpen} className="p-0 border-0 bg-transparent">
-        <img
+      <Button
+        variant="link"
+        onClick={handleOpen}
+        className="p-0 border-0 bg-transparent"
+        style={{ width: 48, height: 48 }}
+      >
+        <Image
           src="/PostButton.png"
           alt="Add Club"
+          width={48}
+          height={48}
           style={{
-            width: '120px',
-            height: '120px',
             objectFit: 'contain',
             maxWidth: '100%',
             maxHeight: '100%',
           }}
+          priority
         />
       </Button>
 
@@ -72,17 +79,23 @@ const AddClubFormModal: React.FC<AddClubFormModalProps> = ({ onAddClub }) => {
               <Form.Control {...register('image')} required />
             </Form.Group>
             <div className="d-flex justify-content-end">
-              <Button variant="secondary" onClick={handleClose} className="me-2">Cancel</Button>
-              <Button type="submit" variant="primary">Create</Button>
+              <Button
+                variant="secondary"
+                onClick={handleClose}
+                className="me-2"
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                variant="primary"
+              >
+                Create
+              </Button>
             </div>
           </Form>
         </Modal.Body>
       </Modal>
-      <style jsx global>{`
-        .custom-modal .modal-dialog {
-          max-width: 500px;
-        }
-      `}</style>
     </>
   );
 };
