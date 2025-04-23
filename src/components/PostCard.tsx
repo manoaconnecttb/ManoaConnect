@@ -1,12 +1,13 @@
 'use client';
 
 /* eslint-disable import/extensions */
+// #TODO: Implement likes (easy?) and comments(hard) functionality
+// #TODO: Add time to the post
 
 import { Card, Image } from 'react-bootstrap';
-// import Link from 'next/link';
-// import { Post } from '@/lib/validationSchemas'; #TODO: Uncomment this when you have a Post schema
+import Link from 'next/link';
+import { Post } from '@/lib/validationSchemas';
 
-/*
 const PostCard = ({ post }: { post: Post }) => (
   <Card className="h-100">
     <Card.Header>
@@ -14,7 +15,9 @@ const PostCard = ({ post }: { post: Post }) => (
       <Card.Title>
         {post.title}
       </Card.Title>
-      <Card.Subtitle>{post.time}{post.author}</Card.Subtitle>
+      <Card.Subtitle>
+        {post.author}
+      </Card.Subtitle>
     </Card.Header>
     <Card.Body>
       <Card.Text>
@@ -22,17 +25,21 @@ const PostCard = ({ post }: { post: Post }) => (
       </Card.Text>
     </Card.Body>
     <Card.Footer>
-      <Link href={`/posts/${post.id}`} className="text-blue-500 hover:underline">
+      <Link href="/home" className="text-blue-500 hover:underline">
         Like
+        {post.likes}
+      </Link>
+      <Link href="/home" className="text-blue-500 hover:underline">
+        Comment
+        {post.comments.length}
       </Link>
     </Card.Footer>
   </Card>
 );
-*/
 
-// Placeholder
+/* Placeholder
 const PostCard = () => (
-  <Card className="h-100">
+  <Card className="postcard h-100">
     <Card.Header>
       <Image src="https://github.com/RuiChen12.png" alt="Post Image" width={400} />
       <Card.Title>
@@ -50,5 +57,6 @@ const PostCard = () => (
     </Card.Footer>
   </Card>
 );
+*/
 
 export default PostCard;
