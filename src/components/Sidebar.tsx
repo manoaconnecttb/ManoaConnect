@@ -31,7 +31,7 @@ const Sidebar = () => (
         </a>
       </li>
       <li>
-        <a href="/">
+        <a href="/Explore">
           <span><Search /></span>
           Explore
         </a>
