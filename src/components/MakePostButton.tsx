@@ -3,11 +3,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../app/globals.css';
 import { Image } from 'react-bootstrap';
+import Link from 'next/link';
 
 const MakePostButton = () => (
-  // #TODO ADD FUNCTIONALITY TO THIS BUTTON
   <div className="make-post-container">
-    <Image src="../PostButton.png" alt="New Post" className="make-post-button" />
+    <Link className="make-post-button" href="/post">
+      <Image src="../PostButton.png" alt="New Post" className="make-post-button" />
+    </Link>
   </div>
 );
 

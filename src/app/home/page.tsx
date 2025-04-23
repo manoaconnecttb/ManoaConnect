@@ -1,9 +1,12 @@
 import { getServerSession } from 'next-auth';
 import authOptions from '@/lib/authOptions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
-import { Container } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import MakePostButton from '@/components/MakePostButton';
 import PostCard from '@/components/PostCard';
+import { prisma } from '@/lib/prisma';
+
+// #TODO: make so only some posts are shown at a time
 
 const HomePage = async () => {
   // Protect the page, only logged in users can access it.
@@ -14,21 +17,20 @@ const HomePage = async () => {
     } | null,
   );
 
-  const mockPosts = Array.from({ length: 3 }, (_, i) => ({
-    id: i + 1,
-    title: `Post Title ${i + 1}`,
-    content: `This is the content of post ${i + 1}. It’s just placeholder text for now.`,
-  }));
+  const posts = await prisma.post.findMany({
+  });
 
   return (
-    <main className="flex justify-end items-center min-h-screen bg-gray-100 px-4 py-6">
-      <Container className="w-full max-w-2xl rounded-2xl shadow-xl p-6 overflow-y-auto max-h-[80vh] mr-10 bg-white">
-        <h1 className="text-2xl font-bold mb-4 text-gray-800">Posts</h1>
-        <div className="space-y-4">
-          {mockPosts.map((post) => (
-            <PostCard key={post.id} />
-          ))}
-        </div>
+    <main className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
+      <Container className="w-full max-w-2xl rounded-2xl shadow-xl p-4 overflow-y-auto max-h-[80vh]">
+        <Col>
+          <h1>Posts</h1>
+          {/* <Row className="gy-4">
+            {posts.map((post) => (
+              <PostCard post={post} />
+            ))}
+          </Row> */}
+        </Col>
       </Container>
       <MakePostButton />
     </main>
