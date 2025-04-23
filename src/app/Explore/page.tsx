@@ -1,10 +1,10 @@
 import { getServerSession } from 'next-auth';
 import { Col, Container, Row } from 'react-bootstrap';
-import { prisma } from '@/lib/prisma.ts';
+import { prisma } from '@/lib/prisma';
 // import StuffItem from '@/components/StuffItem';
-import { loggedInProtectedPage } from '@/lib/page-protection.ts';
-import authOptions from '@/lib/authOptions.ts';
-import PostCard from '@/components/PostCard.tsx';
+import { loggedInProtectedPage } from '@/lib/page-protection';
+import authOptions from '@/lib/authOptions';
+import PostCard from '@/components/PostCard';
 
 /** Render a list of stuff for the logged in user. */
 const ExplorePage = async () => {
@@ -17,7 +17,7 @@ const ExplorePage = async () => {
     } | null,
   );
   const owner = (session && session.user && session.user.email) || '';
-  const contacts: Contact[] = await prisma.stuff.findMany({
+  const contacts = await prisma.stuff.findMany({
     where: {
       owner,
     },
@@ -41,7 +41,7 @@ const ExplorePage = async () => {
                   key={contact.name + contact.id}
                   className="d-flex justify-content-center"
                 >
-                  <PostCard contact={contact} />
+                  <PostCard />
                 </Col>
               ))}
             </Row>
