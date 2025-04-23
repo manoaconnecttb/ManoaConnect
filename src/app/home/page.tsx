@@ -5,6 +5,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import MakePostButton from '@/components/MakePostButton';
 import PostCard from '@/components/PostCard';
 import { prisma } from '@/lib/prisma';
+import { Post } from '@prisma/client';
 
 // #TODO: make so only some posts are shown at a time
 
@@ -17,7 +18,7 @@ const HomePage = async () => {
     } | null,
   );
 
-  const posts = await prisma.post.findMany({
+  const posts: Post[] = await prisma.post.findMany({
   });
 
   return (
