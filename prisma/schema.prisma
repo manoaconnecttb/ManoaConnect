@@ -43,4 +43,5 @@ model Club {
   major     String
   email     String   @unique
   clubName  String
+  description String
 }
