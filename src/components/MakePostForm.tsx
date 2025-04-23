@@ -44,7 +44,7 @@ const MakePostForm: React.FC = () => {
         <Row className="justify-content-center">
           <Col xs={5}>
             <Col className="text-center">
-              <h2>Feedback</h2>
+              <h2>New Post</h2>
             </Col>
             <Card>
               <Card.Body>
