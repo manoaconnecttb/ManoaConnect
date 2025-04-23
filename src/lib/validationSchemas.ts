@@ -1,4 +1,3 @@
-import { DateTime } from 'next-auth/providers/kakao';
 import * as Yup from 'yup';
 
 export const AddStuffSchema = Yup.object({
@@ -21,7 +20,6 @@ export const MakePostSchema = Yup.object({
   title: Yup.string().required(),
   image: Yup.string().required(),
   author: Yup.string().required(),
-  time: Yup.date().required(),
   content: Yup.string().required(),
   likes: Yup.number().required(),
   comments: Yup.array().of(Yup.string()).required(),
@@ -33,7 +31,6 @@ export interface Post {
   title: string;
   image: string;
   author: string;
-  time: DateTime;
   content: string;
   likes: number;
   comments: string[];
