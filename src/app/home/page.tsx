@@ -10,15 +10,15 @@ import { prisma } from '@/lib/prisma';
 
 const HomePage = async () => {
   // Protect the page, only logged in users can access it.
-  // const session = await getServerSession(authOptions);
-  // loggedInProtectedPage(
-  //   session as {
-  //     user: { email: string; id: string; randomKey: string };
-  //   } | null,
-  // );
+  const session = await getServerSession(authOptions);
+  loggedInProtectedPage(
+    session as {
+      user: { email: string; id: string; randomKey: string };
+    } | null,
+  );
 
-  // const posts = await prisma.post.findMany({
-  // });
+  const posts = await prisma.post.findMany({
+  });
 
   return (
     <main className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
