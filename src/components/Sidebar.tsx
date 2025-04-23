@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { HouseFill, FilePersonFill, Search } from 'react-bootstrap-icons';
+import { HouseFill, FilePersonFill, Search, PeopleFill } from 'react-bootstrap-icons';
 
 const Sidebar = () => (
   <aside className="sidebar">
@@ -35,6 +35,12 @@ const Sidebar = () => (
         <Link href="/explore" className="d-flex align-items-center gap-2">
           <Search />
           <span>Explore</span>
+        </Link>
+      </li>
+      <li>
+        <Link href="/clubs" className="d-flex align-items-center gap-2">
+          <PeopleFill />
+          <span>My Clubs</span>
         </Link>
       </li>
     </ul>

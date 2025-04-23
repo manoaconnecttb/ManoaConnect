@@ -1,0 +1,90 @@
+'use client';
+
+import React, { useState } from 'react';
+import { Button, Modal, Form } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+
+export interface ClubData {
+  creator: string;
+  email: string;
+  name: string;
+  description: string;
+  image: string;
+}
+
+interface AddClubFormModalProps {
+  onAddClub: (club: ClubData) => void;
+}
+
+const AddClubFormModal: React.FC<AddClubFormModalProps> = ({ onAddClub }) => {
+  const [show, setShow] = useState(false);
+  const { register, handleSubmit, reset } = useForm<ClubData>();
+
+  const handleOpen = () => setShow(true);
+  const handleClose = () => setShow(false);
+
+  const onSubmit = (data: ClubData) => {
+    onAddClub(data);
+    handleClose();
+    reset();
+  };
+
+  return (
+    <>
+      <Button variant="link" onClick={handleOpen} className="p-0 border-0 bg-transparent">
+        <img
+          src="/PostButton.png"
+          alt="Add Club"
+          style={{
+            width: '120px',
+            height: '120px',
+            objectFit: 'contain',
+            maxWidth: '100%',
+            maxHeight: '100%',
+          }}
+        />
+      </Button>
+
+      <Modal show={show} onHide={handleClose} centered dialogClassName="custom-modal">
+        <Modal.Header closeButton>
+          <Modal.Title>Create a Club</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form.Group className="mb-2">
+              <Form.Label>Creator Name</Form.Label>
+              <Form.Control {...register('creator')} required />
+            </Form.Group>
+            <Form.Group className="mb-2">
+              <Form.Label>Gmail</Form.Label>
+              <Form.Control type="email" {...register('email')} required />
+            </Form.Group>
+            <Form.Group className="mb-2">
+              <Form.Label>Club Name</Form.Label>
+              <Form.Control {...register('name')} required />
+            </Form.Group>
+            <Form.Group className="mb-2">
+              <Form.Label>Description</Form.Label>
+              <Form.Control as="textarea" rows={3} {...register('description')} required />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Club Image URL</Form.Label>
+              <Form.Control {...register('image')} required />
+            </Form.Group>
+            <div className="d-flex justify-content-end">
+              <Button variant="secondary" onClick={handleClose} className="me-2">Cancel</Button>
+              <Button type="submit" variant="primary">Create</Button>
+            </div>
+          </Form>
+        </Modal.Body>
+      </Modal>
+      <style jsx global>{`
+        .custom-modal .modal-dialog {
+          max-width: 500px;
+        }
+      `}</style>
+    </>
+  );
+};
+
+export default AddClubFormModal;
