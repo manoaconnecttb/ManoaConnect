@@ -2,6 +2,7 @@
 
 /* eslint-disable import/extensions */
 // #TODO: Implement likes (easy?) and comments(hard) functionality
+// #TODO: Add time to the post
 
 import { Card, Image } from 'react-bootstrap';
 import Link from 'next/link';
@@ -15,7 +16,6 @@ const PostCard = ({ post }: { post: Post }) => (
         {post.title}
       </Card.Title>
       <Card.Subtitle>
-        {post.time}
         {post.author}
       </Card.Subtitle>
     </Card.Header>

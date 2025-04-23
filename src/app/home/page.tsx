@@ -27,7 +27,7 @@ const HomePage = async () => {
           <h1>Posts</h1>
           <Row className="gy-4">
             {posts.map((post) => (
-              <PostCard post={post} />
+              <PostCard key={post.id} post={post} />
             ))}
           </Row>
         </Col>
