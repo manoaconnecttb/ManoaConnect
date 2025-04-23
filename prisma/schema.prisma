@@ -37,3 +37,22 @@ model Stuff {
   condition Condition @default(good)
   owner     String
 }
+model Club {
+  id          Int   @id @default(autoincrement())
+  name        String
+  description String
+  creator     String
+  email       String
+  image       String
+  createdAt   DateTime @default(now())
+}
+model Post {
+  id        Int       @id @default(autoincrement()) @unique
+  title     String
+  image     String
+  author    String
+  content   String
+  likes     Int       @default(0)
+  comments  String[]  @default([])
+  owner     String
+}

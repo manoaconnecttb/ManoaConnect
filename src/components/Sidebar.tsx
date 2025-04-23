@@ -1,8 +1,11 @@
 'use client';
 
+import { useSession } from 'next-auth/react';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 import Image from 'next/image';
-import { HouseFill, FilePersonFill, Search } from 'react-bootstrap-icons';
+import Link from 'next/link';
+import { HouseFill, FilePersonFill, Search, PencilSquare, BorderAll } from 'react-bootstrap-icons';
 
 const Sidebar = () => {
   const { data: session } = useSession();
@@ -50,7 +53,6 @@ const Sidebar = () => {
                 Feedback
               </Link>
             </li>
-
           </>
         )}
         <li>
