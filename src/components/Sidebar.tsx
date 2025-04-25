@@ -17,7 +17,7 @@ const Sidebar = () => {
     <aside className="sidebar">
       <div className="sidebar-header">
         <Image
-          src="/ManoaConnectLogo.png"
+          src="/ManoaConnectCenterLogo3.png"
           alt="Logo"
           className="sidebar-logo"
           width={40}
