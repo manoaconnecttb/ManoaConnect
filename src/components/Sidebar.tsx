@@ -5,7 +5,9 @@ import { usePathname } from 'next/navigation';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { HouseFill, FilePersonFill, Search, PencilSquare, BorderAll, PersonFillGear, PeopleFill } from 'react-bootstrap-icons';
+import {
+  HouseFill, FilePersonFill, Search, PencilSquare, BorderAll, PersonFillGear, PeopleFill
+} from 'react-bootstrap-icons';
 
 const Sidebar = () => {
   const { data: session } = useSession();
