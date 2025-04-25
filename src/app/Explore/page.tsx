@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import { getServerSession } from 'next-auth';
 import { Col, Container, Row } from 'react-bootstrap';
 import { prisma } from '@/lib/prisma';
@@ -17,7 +18,7 @@ const ExplorePage = async () => {
     } | null,
   );
   const owner = (session && session.user && session.user.email) || '';
-  const contacts = await prisma.stuff.findMany({
+  const posts = await prisma.post.findMany({
     where: {
       owner,
     },
@@ -36,12 +37,9 @@ const ExplorePage = async () => {
               className="g-3 justify-content-center"
               style={{ maxHeight: '70vh', overflowY: 'auto' }}
             >
-              {contacts.map((contact) => (
-                <Col
-                  key={contact.name + contact.id}
-                  className="d-flex justify-content-center"
-                >
-                  <PostCard />
+              {posts.map((post) => (
+                <Col>
+                  <PostCard key={post.id} post={post} />
                 </Col>
               ))}
             </Row>
