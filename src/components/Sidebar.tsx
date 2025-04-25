@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { HouseFill, FilePersonFill, Search, PencilSquare, BorderAll, PeopleFill } from 'react-bootstrap-icons';
+import { HouseFill, FilePersonFill, Search, PencilSquare, BorderAll, PersonFillGear, PeopleFill } from 'react-bootstrap-icons';
 
 const Sidebar = () => {
   const { data: session } = useSession();
@@ -65,11 +65,20 @@ const Sidebar = () => {
             My Clubs
           </Link>
         </li>
+        {currentUser && (
+        <li>
+          <Link href="/feedback" className={pathName === '/feedback' ? 'active' : ''}>
+            <span><PencilSquare /></span>
+            Feedback
+          </Link>
+        </li>
+        )}
 
         {/* Admin Only Link */}
         {currentUser && role === 'ADMIN' && (
           <li>
             <Link href="/admin" className={pathName === '/admin' ? 'active' : ''}>
+              <span><PersonFillGear /></span>
               Admin
             </Link>
           </li>
