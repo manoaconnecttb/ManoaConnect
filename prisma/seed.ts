@@ -36,6 +36,27 @@ async function main() {
       },
     });
   }
+  for (const data of config.defaultPosts) {
+    const likes = 0;
+    const comments: string[] = [];
+    console.log(`  Adding Post: ${JSON.stringify(data)}`);
+    // eslint-disable-next-line no-await-in-loop
+    await prisma.post.upsert({
+      where: {
+        id: config.defaultPosts.indexOf(data) + 1,
+      },
+      update: {},
+      create: {
+        title: data.title,
+        owner: data.owner,
+        image: data.image,
+        content: data.content,
+        author: data.author,
+        likes,
+        comments,
+      },
+    });
+  }
 }
 main()
   .then(() => prisma.$disconnect())

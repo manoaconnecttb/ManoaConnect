@@ -29,20 +29,25 @@ const SignIn = () => {
       <Container>
         <Row className="justify-content-center">
           <Col xs={5}>
-            <h1 className="text-center">Sign In</h1>
+            <h1 className="text-center text-white">Sign In</h1>
             <Card>
               <Card.Body>
                 <Form method="post" onSubmit={handleSubmit}>
                   <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email</Form.Label>
+                    <Form.Label style={{ color: '#024731' }}>Email</Form.Label>
                     <input name="email" type="text" className="form-control" />
                   </Form.Group>
                   <Form.Group>
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label style={{ color: '#024731' }}>Password</Form.Label>
                     <input name="password" type="password" className="form-control" />
                   </Form.Group>
-                  <Button type="submit" className="mt-3">
-                    Signin
+                  <br />
+                  <Button
+                    type="submit"
+                    className="btn float-right"
+                    style={{ backgroundColor: '#024731', color: 'white', border: 'none' }}
+                  >
+                    Sign In
                   </Button>
                 </Form>
               </Card.Body>

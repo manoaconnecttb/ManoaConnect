@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { HouseFill, FilePersonFill, Search, PencilSquare, BorderAll, PersonFillGear } from 'react-bootstrap-icons';
+import { HouseFill, FilePersonFill, Search, PencilSquare, BorderAll, PersonFillGear, PeopleFill } from 'react-bootstrap-icons';
 
 const Sidebar = () => {
   const { data: session } = useSession();
@@ -17,7 +17,7 @@ const Sidebar = () => {
     <aside className="sidebar">
       <div className="sidebar-header">
         <Image
-          src="/ManoaConnectLogo.png"
+          src="/ManoaConnectCenterLogo3.png"
           alt="Logo"
           className="sidebar-logo"
           width={40}
@@ -53,13 +53,16 @@ const Sidebar = () => {
                 Feedback
               </Link>
             </li>
-
           </>
         )}
         <li>
-          <Link href="/explore">
+          <Link href="/Explore">
             <span><Search /></span>
             Explore
+          </Link>
+          <Link href="/clubs">
+            <span><PeopleFill /></span>
+            My Clubs
           </Link>
         </li>
         {currentUser && (
