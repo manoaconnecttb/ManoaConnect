@@ -3,7 +3,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import PhotoSwitcher from '@/components/PhotoSwitcher';
-import AddClubPrompt from '@/components/AddClubPrompt'; // 引入组件
+import AddClubPrompt from '@/components/AddClubPrompt';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
 
 const Home = () => {

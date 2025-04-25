@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { HouseFill, FilePersonFill, Search, PencilSquare, BorderAll } from 'react-bootstrap-icons';
+import { HouseFill, FilePersonFill, Search, PencilSquare, BorderAll, PeopleFill } from 'react-bootstrap-icons';
 
 const Sidebar = () => {
   const { data: session } = useSession();
@@ -59,6 +59,10 @@ const Sidebar = () => {
           <Link href="/Explore">
             <span><Search /></span>
             Explore
+          </Link>
+          <Link href="/clubs">
+            <span><PeopleFill /></span>
+            My Clubs
           </Link>
         </li>
 

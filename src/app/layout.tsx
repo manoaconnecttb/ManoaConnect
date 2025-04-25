@@ -25,9 +25,12 @@ export default function RootLayout({
       <body className={classString}>
         <Providers>
           <NavBar />
-          <Sidebar />
-          {children}
-          <Sidebar />
+          <div style={{ display: 'flex', minHeight: '100vh' }}>
+            <Sidebar />
+            <main style={{ flex: 1 }}>
+              {children}
+            </main>
+          </div>
           <Footer />
         </Providers>
       </body>
