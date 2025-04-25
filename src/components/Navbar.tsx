@@ -3,6 +3,7 @@
 import { useSession } from 'next-auth/react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, Lock, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
+import Image from 'next/image';
 
 const NavBar: React.FC = () => {
   const { data: session } = useSession();
@@ -14,7 +15,16 @@ const NavBar: React.FC = () => {
           href="/"
           className="mx-auto text-center position-absolute top-50 start-50 translate-middle"
         >
-          Manoa Connect
+          <Image
+            src="/ManoaConnectCenterLogo2.png"
+            alt="Manoa Connect Logo"
+            width={140}
+            height={140}
+            style={{
+              objectFit: 'contain',
+              borderRadius: '12px',
+            }}
+          />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
