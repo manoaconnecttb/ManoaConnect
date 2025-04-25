@@ -1,7 +1,5 @@
 'use client';
 
-import { useSession } from 'next-auth/react';
-import { usePathname } from 'next/navigation';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -49,15 +47,4 @@ const Sidebar = () => (
   </aside>
 );
 
-        {/* Admin Only Link */}
-        {currentUser && role === 'ADMIN' && (
-          <li>
-            <Link href="/admin" className={pathName === '/admin' ? 'active' : ''}>
-              Admin
-            </Link>
-          </li>
-        )}
-      </ul>
-    </aside>
-  );
-};
+export default Sidebar;
