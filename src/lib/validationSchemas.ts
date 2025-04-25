@@ -16,13 +16,10 @@ export const EditStuffSchema = Yup.object({
 });
 
 export const MakePostSchema = Yup.object({
-  id: Yup.number().required(),
   title: Yup.string().required(),
   image: Yup.string().required(),
   author: Yup.string().required(),
   content: Yup.string().required(),
-  likes: Yup.number().required(),
-  comments: Yup.array().of(Yup.string()).required(),
   owner: Yup.string().required(),
 });
 
