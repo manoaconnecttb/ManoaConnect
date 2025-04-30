@@ -32,6 +32,21 @@ export async function addStuff(stuff: { name: string; quantity: number; owner: s
 }
 
 /**
+ * Adds a new stuff to the database.
+ * @param feedback, an object with the following properties: name, response.
+ */
+export async function addFeedback(feedback: { name: string; response: string; }) {
+  await prisma.feedback.create({
+    data: {
+      name: feedback.name,
+      response: feedback.response,
+    },
+  });
+  // After adding, redirect to the feedback page
+  redirect('/feedback');
+}
+
+/**
  * Edits an existing stuff in the database.
  * @param stuff, an object with the following properties: id, name, quantity, owner, condition.
  */
