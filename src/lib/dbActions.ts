@@ -84,6 +84,28 @@ export async function makePost(post: {
   redirect('/home');
 }
 
+export async function makeClub(club: {
+  name: string;
+  description: string;
+  creator: string;
+  email: string;
+  image: string;
+}) {
+  await prisma.club.create({
+    data: {
+      name: club.name,
+      description: club.description,
+      creator: club.creator,
+      email: club.email,
+      image: club.image,
+    },
+  });
+}
+export async function getAllClubs() {
+  return prisma.club.findMany({
+    orderBy: { createdAt: 'desc' },
+  });
+}
 /**
  * Creates a new user in the database.
  * @param credentials, an object with the following properties: email, password.
