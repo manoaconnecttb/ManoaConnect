@@ -24,14 +24,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={classString}>
         <Providers>
-          <NavBar />
-          <div style={{ display: 'flex', minHeight: '100vh' }}>
+          <div className="page-container d-flex flex-column min-vh-100">
+            <NavBar />
             <Sidebar />
-            <main style={{ flex: 1 }}>
+            <main className="flex-grow-1">
               {children}
             </main>
+
+            <Footer />
           </div>
-          <Footer />
         </Providers>
       </body>
     </html>
