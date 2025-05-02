@@ -48,12 +48,12 @@ const SignUp = () => {
       <Container>
         <Row className="justify-content-center">
           <Col xs={5}>
-            <h1 className="text-center text-white">Sign Up</h1>
+            <h1 className="text-center">Sign Up</h1>
             <Card>
               <Card.Body>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                   <Form.Group className="form-group">
-                    <Form.Label style={{ color: '#024731' }}>Email</Form.Label>
+                    <Form.Label>Email</Form.Label>
                     <input
                       type="text"
                       {...register('email')}
@@ -61,17 +61,9 @@ const SignUp = () => {
                     />
                     <div className="invalid-feedback">{errors.email?.message}</div>
                   </Form.Group>
+
                   <Form.Group className="form-group">
-                    <Form.Label style={{ color: '#024731' }}>Gender</Form.Label>
-                    <input
-                      type="text"
-                      {...register('email')}
-                      className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-                    />
-                    <div className="invalid-feedback">{errors.email?.message}</div>
-                  </Form.Group>
-                  <Form.Group className="form-group">
-                    <Form.Label style={{ color: '#024731' }}>Password</Form.Label>
+                    <Form.Label>Password</Form.Label>
                     <input
                       type="password"
                       {...register('password')}
@@ -80,7 +72,7 @@ const SignUp = () => {
                     <div className="invalid-feedback">{errors.password?.message}</div>
                   </Form.Group>
                   <Form.Group className="form-group">
-                    <Form.Label style={{ color: '#024731' }}>Confirm Password</Form.Label>
+                    <Form.Label>Confirm Password</Form.Label>
                     <input
                       type="password"
                       {...register('confirmPassword')}
@@ -91,20 +83,12 @@ const SignUp = () => {
                   <Form.Group className="form-group py-3">
                     <Row>
                       <Col>
-                        <Button
-                          type="submit"
-                          className="btn float-right"
-                          style={{ backgroundColor: '#024731', color: 'white', border: 'none' }}
-                        >
+                        <Button type="submit" className="btn btn-primary">
                           Register
                         </Button>
                       </Col>
                       <Col>
-                        <Button
-                          type="button"
-                          onClick={() => reset()}
-                          className="btn btn-warning float-right text-white"
-                        >
+                        <Button type="button" onClick={() => reset()} className="btn btn-warning float-right">
                           Reset
                         </Button>
                       </Col>
@@ -114,7 +98,7 @@ const SignUp = () => {
               </Card.Body>
               <Card.Footer>
                 Already have an account?
-                <a href="/auth/signin"> Sign in</a>
+                <a href="/auth/signin">Sign in</a>
               </Card.Footer>
             </Card>
           </Col>
