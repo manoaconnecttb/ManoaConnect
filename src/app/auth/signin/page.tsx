@@ -14,11 +14,10 @@ const SignIn = () => {
     const email = target.email.value;
     const password = target.password.value;
     const result = await signIn('credentials', {
-      callbackUrl: '/list',
+      callbackUrl: '/home',
       email,
       password,
     });
-
     if (result?.error) {
       console.error('Sign in failed: ', result.error);
     }

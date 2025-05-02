@@ -28,7 +28,7 @@ export async function addStuff(stuff: { name: string; quantity: number; owner: s
     },
   });
   // After adding, redirect to the list page
-  redirect('/list');
+  redirect('/home');
 }
 
 /**
@@ -119,6 +119,7 @@ export async function createUser(credentials: { email: string; password: string 
       password,
     },
   });
+  redirect('/home');
 }
 
 /**
