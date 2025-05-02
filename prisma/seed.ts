@@ -5,7 +5,8 @@ import * as config from '../config/settings.development.json';
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('Seeding the database');
+  console.log('Checking defaultClubs:');
+  console.log('Seeding the databasedb');
   const password = await hash('changeme', 10);
   config.defaultAccounts.forEach(async (account) => {
     const role = account.role as Role || Role.USER;
@@ -54,6 +55,23 @@ async function main() {
         author: data.author,
         likes,
         comments,
+      },
+    });
+  }
+  for (const data of config.defaultClubs) {
+    console.log(`  Adding club: ${JSON.stringify(data)}`);
+    // eslint-disable-next-line no-await-in-loop
+    await prisma.club.upsert({
+      where: {
+        id: config.defaultClubs.indexOf(data) + 1,
+      },
+      update: {},
+      create: {
+        name: data.name,
+        description: data.description,
+        creator: data.creator,
+        email: data.email,
+        image: data.image,
       },
     });
   }

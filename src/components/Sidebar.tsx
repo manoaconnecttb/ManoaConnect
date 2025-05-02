@@ -66,6 +66,10 @@ const Sidebar = () => {
             <span><PeopleFill /></span>
             My Clubs
           </Link>
+          <Link href="/test">
+            <span><PeopleFill /></span>
+            Test
+          </Link>
         </li>
         {currentUser && (
         <li>

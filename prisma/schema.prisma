@@ -38,7 +38,7 @@ model Stuff {
   owner     String
 }
 model Club {
-  id          Int   @id @default(autoincrement())
+  id          Int   @id @default(autoincrement())  @unique
   name        String
   description String
   creator     String
