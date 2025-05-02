@@ -15,5 +15,6 @@
     { "title": "Hello World", "content": "This is my first post!", "author": "john@foo.com", "owner": "john@foo.com", "image": "https://github.com/RuiChen12.png"},
     { "title": "Hello World2", "content": "This is my second post!", "author": "john@foo.com", "owner": "john@foo.com", "image": "https://github.com/RuiChen12.png"}
   ]
+  
 
 }

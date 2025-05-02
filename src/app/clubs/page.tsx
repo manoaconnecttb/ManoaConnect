@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Container, Row, Col, Nav, Card } from 'react-bootstrap';
 import AddClubFormModal, { ClubData } from '@/components/AddClubFormModal';
+import Activities from './activity/page';
 
 const CLUB_AVATAR = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2azfqh_qr52MOAohFAngj9TyxfdHFYG5Kw&s';
 const CLUB_NAME = 'QQ';
@@ -17,6 +18,7 @@ const DUMMY_POSTS = [
 
 const ClubsPage: React.FC = () => {
   const [clubs, setClubs] = useState<ClubData[]>([]);
+  const [activeTab, setActiveTab] = useState('post'); // State to track the active tab
 
   const handleAddClub = (club: ClubData) => {
     setClubs([...clubs, club]);
@@ -60,6 +62,8 @@ const ClubsPage: React.FC = () => {
           </div>
           <div style={{ fontSize: 16, color: '#888' }}>
             Member:
+          </div>
+          <div style={{ fontSize: 16, color: '#888' }}>
             {MEMBER_COUNT}
           </div>
         </Col>
@@ -67,7 +71,13 @@ const ClubsPage: React.FC = () => {
 
       <hr />
 
-      <Nav variant="tabs" defaultActiveKey="post" className="mb-4">
+      {/* Tab Navigation */}
+      <Nav
+        variant="tabs"
+        activeKey={activeTab}
+        onSelect={(selectedTab) => setActiveTab(selectedTab as string)}
+        className="mb-4"
+      >
         <Nav.Item>
           <Nav.Link eventKey="post">Post</Nav.Link>
         </Nav.Item>
@@ -83,23 +93,25 @@ const ClubsPage: React.FC = () => {
       </Nav>
 
       <div>
-        {DUMMY_POSTS.map((post, idx) => (
-          <div key={post.id} style={{ marginBottom: 24 }}>
-            <Card className="text-start mb-2" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
-              <Card.Body>
-                <Card.Title style={{ fontSize: 18 }}>
-                  {post.author}
-                </Card.Title>
-                <Card.Text>
-                  {post.content}
-                </Card.Text>
-              </Card.Body>
-            </Card>
-            {idx !== DUMMY_POSTS.length - 1 && (
-              <hr style={{ margin: '12px 0' }} />
-            )}
+        {/* Show content based on active tab */}
+        {activeTab === 'post' && (
+          <div>
+            {DUMMY_POSTS.map((post) => (
+              <div key={post.id} style={{ marginBottom: 24 }}>
+                <Card className="text-start mb-2" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
+                  <Card.Body>
+                    <Card.Title style={{ fontSize: 18 }}>{post.author}</Card.Title>
+                    <Card.Text>{post.content}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </div>
+            ))}
           </div>
-        ))}
+        )}
+
+        {activeTab === 'activity' && <Activities />}
+
+        {/* Add other tab contents if needed */}
       </div>
 
       <div

@@ -56,3 +56,8 @@ model Post {
   comments  String[]  @default([])
   owner     String
 }
+model Activity {
+  name String
+  description String
+  link String
+}
