@@ -1,62 +1,67 @@
 'use client';
 
 /* eslint-disable import/extensions */
-// #TODO: Implement likes (easy?) and comments(hard) functionality
-// #TODO: Add time to the post
+// #TODO: Implement comments(hard) functionality
 
-import { Card, Image } from 'react-bootstrap';
+import { useState } from 'react';
+import { Card, Image, Button, Col } from 'react-bootstrap';
+import { HeartFill } from 'react-bootstrap-icons';
 import Link from 'next/link';
 import { Post } from '@/lib/validationSchemas';
 
-const PostCard = ({ post }: { post: Post }) => (
-  <Card className="h-100">
-    <Card.Header>
-      <Image src={post.image} alt="Post Image" width={400} />
-      <Card.Title>
-        {post.title}
-      </Card.Title>
-      <Card.Subtitle>
-        {post.author}
-      </Card.Subtitle>
-    </Card.Header>
-    <Card.Body>
-      <Card.Text>
-        {post.content}
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      <Link href="/home" className="text-blue-500 hover:underline">
-        Like
-        {post.likes}
-      </Link>
-      <Link href="/home" className="text-blue-500 hover:underline">
-        Comment
-        {post.comments.length}
-      </Link>
-    </Card.Footer>
-  </Card>
-);
+const PostCard = ({ post }: { post: Post }) => {
+  const [likes, setLikes] = useState(post.likes);
+  const [isLiking, setIsLiking] = useState(false);
 
-/* Placeholder
-const PostCard = () => (
-  <Card className="postcard h-100">
-    <Card.Header>
-      <Image src="https://github.com/RuiChen12.png" alt="Post Image" width={400} />
-      <Card.Title>
-        Placeholder Post Title
-      </Card.Title>
-      <Card.Subtitle>Posted at Time by Person</Card.Subtitle>
-    </Card.Header>
-    <Card.Body>
-      <Card.Text>
-        Placeholder post
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-      Like
-    </Card.Footer>
-  </Card>
-);
-*/
+  const handleLike = async () => {
+    setIsLiking(true);
+    try {
+      const res = await fetch(`/api/posts/${post.id}/like`, { method: 'POST' });
+      if (res.ok) {
+        const data = await res.json();
+        setLikes(data.likes);
+      } else {
+        console.error('Failed to like post');
+      }
+    } catch (err) {
+      console.error('Error liking post:', err);
+    } finally {
+      setIsLiking(false);
+    }
+  };
+  return (
+    <Card className="h-100">
+      <Card.Header>
+        <Image src={post.image} alt="Post Image" width={400} />
+        <Card.Title>
+          {post.title}
+        </Card.Title>
+        <Card.Subtitle>
+          {post.author}
+        </Card.Subtitle>
+      </Card.Header>
+      <Card.Body>
+        <Card.Text>
+          {post.content}
+        </Card.Text>
+      </Card.Body>
+      <Card.Footer>
+        <Col>
+          <Button variant="outline-primary" onClick={handleLike} disabled={isLiking}>
+            <HeartFill />
+            Like
+            {likes}
+          </Button>
+        </Col>
+        <Col>
+          <Link href="/home" className="text-blue-500 hover:underline">
+            Comment
+            {post.comments.length}
+          </Link>
+        </Col>
+      </Card.Footer>
+    </Card>
+  );
+};
 
 export default PostCard;

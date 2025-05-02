@@ -28,7 +28,22 @@ export async function addStuff(stuff: { name: string; quantity: number; owner: s
     },
   });
   // After adding, redirect to the list page
-  redirect('/list');
+  redirect('/home');
+}
+
+/**
+ * Adds a new stuff to the database.
+ * @param feedback, an object with the following properties: name, response.
+ */
+export async function addFeedback(feedback: { name: string; response: string; }) {
+  await prisma.feedback.create({
+    data: {
+      name: feedback.name,
+      response: feedback.response,
+    },
+  });
+  // After adding, redirect to the feedback page
+  redirect('/feedback');
 }
 
 /**
@@ -84,6 +99,45 @@ export async function makePost(post: {
   redirect('/home');
 }
 
+export async function likePost(id: number) {
+  // console.log(`likePost id: ${id}`);
+  try {
+    await prisma.post.update({
+      where: { id },
+      data: {
+        likes: { increment: 1 },
+      },
+    });
+    // Optionally redirect after liking (if called from a server action)
+    // redirect('/home');
+  } catch (error) {
+    console.error('Failed to like post:', error);
+    throw error;
+  }
+}
+
+export async function makeClub(club: {
+  name: string;
+  description: string;
+  creator: string;
+  email: string;
+  image: string;
+}) {
+  await prisma.club.create({
+    data: {
+      name: club.name,
+      description: club.description,
+      creator: club.creator,
+      email: club.email,
+      image: club.image,
+    },
+  });
+}
+export async function getAllClubs() {
+  return prisma.club.findMany({
+    orderBy: { createdAt: 'desc' },
+  });
+}
 /**
  * Creates a new user in the database.
  * @param credentials, an object with the following properties: email, password.
@@ -97,6 +151,7 @@ export async function createUser(credentials: { email: string; password: string 
       password,
     },
   });
+  redirect('/home');
 }
 
 /**
