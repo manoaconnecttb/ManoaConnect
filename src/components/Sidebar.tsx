@@ -6,7 +6,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  HouseFill, FilePersonFill, Search, PencilSquare, BorderAll, PersonFillGear, PeopleFill,
+  HouseFill, FilePersonFill, Search, PencilSquare, PersonFillGear, PeopleFill,
 } from 'react-bootstrap-icons';
 
 const Sidebar = () => {
@@ -35,18 +35,18 @@ const Sidebar = () => {
             Home
           </Link>
         </li>
+        <li>
+          <Link href="/Explore">
+            <span><Search /></span>
+            Explore
+          </Link>
+        </li>
         {currentUser && (
           <>
             <li>
               <Link href="/following" className={pathName === '/following' ? 'active' : ''}>
                 <span><FilePersonFill /></span>
                 Following
-              </Link>
-            </li>
-            <li>
-              <Link href="/clubs" className={pathName === '/clubs' ? 'active' : ''}>
-                <span><BorderAll /></span>
-                Clubs
               </Link>
             </li>
             <li>
@@ -58,28 +58,11 @@ const Sidebar = () => {
           </>
         )}
         <li>
-          <Link href="/Explore">
-            <span><Search /></span>
-            Explore
-          </Link>
-          <Link href="/clubs">
-            <span><PeopleFill /></span>
-            My Clubs
-          </Link>
           <Link href="/test">
             <span><PeopleFill /></span>
             Test
           </Link>
         </li>
-        {currentUser && (
-        <li>
-          <Link href="/feedback" className={pathName === '/feedback' ? 'active' : ''}>
-            <span><PencilSquare /></span>
-            Feedback
-          </Link>
-        </li>
-        )}
-
         {/* Admin Only Link */}
         {currentUser && role === 'ADMIN' && (
           <li>
