@@ -37,6 +37,11 @@ model Stuff {
   condition Condition @default(good)
   owner     String
 }
+model Feedback {
+  id          Int   @id @default(autoincrement())
+  name        String
+  response    String
+}
 model Club {
   id          Int   @id @default(autoincrement())  @unique
   name        String
