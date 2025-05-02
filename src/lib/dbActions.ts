@@ -99,6 +99,23 @@ export async function makePost(post: {
   redirect('/home');
 }
 
+export async function likePost(id: number) {
+  // console.log(`likePost id: ${id}`);
+  try {
+    await prisma.post.update({
+      where: { id },
+      data: {
+        likes: { increment: 1 },
+      },
+    });
+    // Optionally redirect after liking (if called from a server action)
+    // redirect('/home');
+  } catch (error) {
+    console.error('Failed to like post:', error);
+    throw error;
+  }
+}
+
 export async function makeClub(club: {
   name: string;
   description: string;
