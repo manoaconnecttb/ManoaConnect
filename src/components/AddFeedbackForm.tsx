@@ -67,21 +67,6 @@ const AddFeedbackForm: React.FC = () => {
                     />
                     <div className="invalid-feedback">{errors.name?.message}</div>
                   </Form.Group>
-                  {/* <Form.Group>
-                    <Form.Label>Condition</Form.Label>
-                    <select
-                      {...register('condition')}
-                      className={`form-control ${errors.condition ? 'is-invalid' : ''}`}
-                    >
-                      <option value="excellent">Excellent</option>
-                      <option value="good">Good</option>
-                      <option value="fair">Fair</option>
-                      <option value="poor">Poor</option>
-                    </select>
-                    <div className="invalid-feedback">{errors.condition?.message}</div>
-                  </Form.Group>
-                  <input type="hidden" {...register('response')} value={currentUser} />
-                  */}
                   <Form.Group className="form-group">
                     <Row className="pt-3">
                       <Col>
