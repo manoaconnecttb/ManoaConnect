@@ -53,13 +53,14 @@ const AddFeedbackForm: React.FC = () => {
                     <input
                       type="text"
                       {...register('name')}
-                      value={currentUser}
+                      defaultValue={currentUser}
+                      readOnly
                       className={`form-control ${errors.name ? 'is-invalid' : ''}`}
                     />
                     <div className="invalid-feedback">{errors.name?.message}</div>
                   </Form.Group>
                   <Form.Group>
-                    <Form.Label>Username</Form.Label>
+                    <Form.Label>Feedback</Form.Label>
                     <input
                       type="text"
                       {...register('response')}
