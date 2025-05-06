@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable import/extensions */
 import { getServerSession } from 'next-auth';
 import { Col, Container, Row } from 'react-bootstrap';
