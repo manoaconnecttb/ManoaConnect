@@ -1,4 +1,5 @@
 import { Col, Container, Row } from 'react-bootstrap';
+import { Linkedin, Facebook, Twitter, Instagram } from 'react-bootstrap-icons';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 const Footer = () => (
@@ -38,10 +39,10 @@ const Footer = () => (
         {/* Column 4: Social Media Links */}
         <Col style={{ backgroundColor: '#013d2e' }} className="text-center text-light py-2">
           <h5>Follow Us</h5>
-          <a href="#facebook" className="text-light me-2">Facebook</a>
-          <a href="#twitter" className="text-light me-2">Twitter</a>
-          <a href="#instagram" className="text-light me-2">Instagram</a>
-          <a href="#linkedin" className="text-light">LinkedIn</a>
+          <a href="#facebook" className="text-light me-2 px-2" style={{ fontSize: '1.2rem' }}><Facebook /></a>
+          <a href="#twitter" className="text-light me-2 px-2" style={{ fontSize: '1.2rem' }}><Twitter /></a>
+          <a href="#instagram" className="text-light me-2 px-2" style={{ fontSize: '1.2rem' }}><Instagram /></a>
+          <a href="#linkedin" className="text-light px-2" style={{ fontSize: '1.2rem' }}><Linkedin /></a>
         </Col>
       </Row>
     </Container>

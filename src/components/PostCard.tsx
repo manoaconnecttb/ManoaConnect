@@ -8,10 +8,14 @@ import { Card, Image, Button, Col } from 'react-bootstrap';
 import { HeartFill } from 'react-bootstrap-icons';
 import Link from 'next/link';
 import { Post } from '@/lib/validationSchemas';
+import { HandThumbsUp, Chat } from 'react-bootstrap-icons';
 
+
+=======
 const PostCard = ({ post }: { post: Post }) => {
   const [likes, setLikes] = useState(post.likes);
   const [isLiking, setIsLiking] = useState(false);
+>>>>>>> main
 
   const handleLike = async () => {
     setIsLiking(true);
@@ -32,7 +36,7 @@ const PostCard = ({ post }: { post: Post }) => {
   return (
     <Card className="h-100">
       <Card.Header>
-        <Image src={post.image} alt="Post Image" width={400} />
+        <Image src={post.image} alt="Post Image" width={365} />
         <Card.Title>
           {post.title}
         </Card.Title>
