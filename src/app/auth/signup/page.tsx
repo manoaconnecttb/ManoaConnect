@@ -62,15 +62,6 @@ const SignUp = () => {
                     <div className="invalid-feedback">{errors.email?.message}</div>
                   </Form.Group>
                   <Form.Group className="form-group">
-                    <Form.Label style={{ color: '#024731' }}>Gender</Form.Label>
-                    <input
-                      type="text"
-                      {...register('email')}
-                      className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-                    />
-                    <div className="invalid-feedback">{errors.email?.message}</div>
-                  </Form.Group>
-                  <Form.Group className="form-group">
                     <Form.Label style={{ color: '#024731' }}>Password</Form.Label>
                     <input
                       type="password"

@@ -11,7 +11,7 @@ import { Post } from '@/lib/validationSchemas';
 const PostCard = ({ post }: { post: Post }) => (
   <Card className="h-100">
     <Card.Header>
-      <Image src={post.image} alt="Post Image" width={400} />
+      <Image src={post.image} alt="Post Image" width={365} />
       <Card.Title>
         {post.title}
       </Card.Title>
