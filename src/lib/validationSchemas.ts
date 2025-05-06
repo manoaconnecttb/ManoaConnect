@@ -7,6 +7,11 @@ export const AddStuffSchema = Yup.object({
   owner: Yup.string().required(),
 });
 
+export const AddFeedbackSchema = Yup.object({
+  name: Yup.string().required(),
+  response: Yup.string().required(),
+});
+
 export const EditStuffSchema = Yup.object({
   id: Yup.number().required(),
   name: Yup.string().required(),

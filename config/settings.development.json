@@ -14,6 +14,8 @@
   "defaultPosts": [
     { "title": "Hello World", "content": "This is my first post!", "author": "john@foo.com", "owner": "john@foo.com", "image": "https://github.com/RuiChen12.png"},
     { "title": "Hello World2", "content": "This is my second post!", "author": "john@foo.com", "owner": "john@foo.com", "image": "https://github.com/RuiChen12.png"}
+  ],
+  "defaultClubs": [
+    {"name": "QQ Club", "description": "Test club for social and tech activities.", "creator": "Admin", "email": "admin@foo.com", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2azfqh_qr52MOAohFAngj9TyxfdHFYG5Kw&s"}
   ]
-
 }

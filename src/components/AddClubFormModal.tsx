@@ -1,6 +1,5 @@
-'use client';
-
-import React, { useState } from 'react';
+import React, { useState, useTransition } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
@@ -14,20 +13,25 @@ export interface ClubData {
 }
 
 interface AddClubFormModalProps {
-  onAddClub: (club: ClubData) => void;
+  onAddClub: (club: ClubData) => Promise<void>;
 }
 
 const AddClubFormModal: React.FC<AddClubFormModalProps> = ({ onAddClub }) => {
   const [show, setShow] = useState(false);
+  const [isPending, startTransition] = useTransition();
   const { register, handleSubmit, reset } = useForm<ClubData>();
+  const router = useRouter();
 
   const handleOpen = () => setShow(true);
   const handleClose = () => setShow(false);
 
   const onSubmit = (data: ClubData) => {
-    onAddClub(data);
-    handleClose();
-    reset();
+    startTransition(async () => {
+      await onAddClub(data); // ✅ 使用传入的 prop
+      handleClose();
+      reset();
+      router.refresh();
+    });
   };
 
   return (
@@ -79,18 +83,11 @@ const AddClubFormModal: React.FC<AddClubFormModalProps> = ({ onAddClub }) => {
               <Form.Control {...register('image')} required />
             </Form.Group>
             <div className="d-flex justify-content-end">
-              <Button
-                variant="secondary"
-                onClick={handleClose}
-                className="me-2"
-              >
+              <Button variant="secondary" onClick={handleClose} className="me-2">
                 Cancel
               </Button>
-              <Button
-                type="submit"
-                variant="primary"
-              >
-                Create
+              <Button type="submit" variant="primary" disabled={isPending}>
+                {isPending ? 'Creating...' : 'Create'}
               </Button>
             </div>
           </Form>
