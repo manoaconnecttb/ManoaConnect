@@ -148,3 +148,8 @@ body {
   padding-top: 50px;
   padding-bottom: 50px;
 }
+
+a.no-underline {
+  text-decoration: none !important;
+  color: #024731 !important;
+}

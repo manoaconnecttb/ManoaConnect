@@ -7,6 +7,7 @@
 import { Card, Image } from 'react-bootstrap';
 import Link from 'next/link';
 import { Post } from '@/lib/validationSchemas';
+import { HandThumbsUp, Chat } from 'react-bootstrap-icons';
 
 const PostCard = ({ post }: { post: Post }) => (
   <Card className="h-100">
@@ -25,14 +26,19 @@ const PostCard = ({ post }: { post: Post }) => (
       </Card.Text>
     </Card.Body>
     <Card.Footer>
-      <Link href="/home" className="text-blue-500 hover:underline">
-        Like
+      <Link href="/home" className="text-[#024731] no-underline hover:no-underline">
+        <HandThumbsUp className="mb-1" />
+        {' '}
         {post.likes}
+        {' '}
       </Link>
-      <Link href="/home" className="text-blue-500 hover:underline">
-        Comment
+      <Link href="/home" className="no-underline hover:no-underline text-[#024731]">
+        {' '}
+        <Chat className="mb-1 ml-4" />
+        {' '}
         {post.comments.length}
       </Link>
+
     </Card.Footer>
   </Card>
 );
