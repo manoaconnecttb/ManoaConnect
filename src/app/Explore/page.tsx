@@ -6,6 +6,7 @@ import { prisma } from '@/lib/prisma';
 import { loggedInProtectedPage } from '@/lib/page-protection';
 import authOptions from '@/lib/authOptions';
 import PostCard from '@/components/PostCard';
+import Link from 'next/link';
 
 /** Render a list of stuff for the logged in user. */
 const ExplorePage = async () => {
@@ -30,7 +31,10 @@ const ExplorePage = async () => {
       <Container id="list" fluid className="py-3">
         <Row>
           <Col>
-            <h1 className="text-center" style={{ color: '#024731', fontWeight: 'bold' }}>Explore</h1>
+            <h1 className="text-center" style={{ color: '#024731', fontWeight: 'bold' }}>Explore Posts</h1>
+            <Link href="/home" className="no-underline hover:no-underline text-[#024731]">
+              Explore Clubs
+            </Link>
             <div className="p-3" style={{ backgroundColor: '#f8f9fa', borderRadius: '10px' }}>
               <Row>
                 <Col className="d-flex align-items-center">
