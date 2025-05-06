@@ -5,6 +5,7 @@ const nextConfig = {
       'encrypted-tbn0.gstatic.com',
       'pic2.zhimg.com',
       'uhmgreyhats.github.io',
+      'acmmanoa.org',
     ],
   },
 };

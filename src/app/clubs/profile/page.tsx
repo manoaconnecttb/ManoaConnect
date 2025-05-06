@@ -22,8 +22,7 @@ export default function ClubProfilePage() {
       creator,
       email,
     }).toString();
-    router.push(`/clubs
-      ?${query}`);
+    router.push(`/clubs?${query}`);
   };
 
   return (
