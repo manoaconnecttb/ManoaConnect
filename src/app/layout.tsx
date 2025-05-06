@@ -26,11 +26,10 @@ export default function RootLayout({
         <Providers>
           <div className="page-container d-flex flex-column min-vh-100">
             <NavBar />
-            <Sidebar />
             <main className="flex-grow-1">
               {children}
             </main>
-
+            <Sidebar />
             <Footer />
           </div>
         </Providers>
