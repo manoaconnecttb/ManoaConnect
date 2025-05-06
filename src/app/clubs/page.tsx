@@ -1,26 +1,17 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
+import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
-import Link from 'next/link';
-import { Container, Row, Col, Nav, Card } from 'react-bootstrap';
-import AddClubFormModal, { ClubData } from '@/components/AddClubFormModal';
-
-const CLUB_AVATAR = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2azfqh_qr52MOAohFAngj9TyxfdHFYG5Kw&s';
-const CLUB_NAME = 'QQ';
-const MEMBER_COUNT = 1;
-
-const DUMMY_POSTS = [
-  { id: 1, author: 'Alice', content: 'Welcome to QQ Club!' },
-  { id: 2, author: 'Bob', content: 'Remember our meeting this Friday at 6pm.' },
-];
+import { Container, Row, Col, Nav } from 'react-bootstrap';
 
 const ClubsPage: React.FC = () => {
-  const [clubs, setClubs] = useState<ClubData[]>([]);
+  const params = useSearchParams();
 
-  const handleAddClub = (club: ClubData) => {
-    setClubs([...clubs, club]);
-  };
+  const name = params.get('name') || 'Unnamed Club';
+  const image = params.get('image') || 'https://via.placeholder.com/120';
+  const creator = params.get('creator') || 'Unknown';
+  const email = params.get('email') || 'N/A';
 
   return (
     <Container
@@ -34,33 +25,32 @@ const ClubsPage: React.FC = () => {
         maxWidth: 900,
       }}
     >
-
       <Row className="align-items-center mb-3">
         <Col xs="auto">
-          <Link href="/clubs/profile" style={{ display: 'inline-block' }}>
-            <Image
-              src={CLUB_AVATAR}
-              alt="Club Avatar"
-              width={64}
-              height={64}
-              style={{
-                borderRadius: '16px',
-                objectFit: 'cover',
-                border: '2px solid #eee',
-                boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
-                cursor: 'pointer',
-              }}
-              priority
-            />
-          </Link>
+          <Image
+            src={image}
+            alt="Club Avatar"
+            width={64}
+            height={64}
+            style={{
+              borderRadius: '16px',
+              objectFit: 'cover',
+              border: '2px solid #eee',
+              boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
+            }}
+            priority
+          />
         </Col>
         <Col className="text-start">
-          <div style={{ fontWeight: 700, fontSize: 24 }}>
-            {CLUB_NAME}
-          </div>
+          <div style={{ fontWeight: 700, fontSize: 24 }}>{name}</div>
           <div style={{ fontSize: 16, color: '#888' }}>
-            Member:
-            {MEMBER_COUNT}
+            Created by:
+            <br />
+            {creator}
+            <br />
+            (
+            {email}
+            )
           </div>
         </Col>
       </Row>
@@ -82,37 +72,8 @@ const ClubsPage: React.FC = () => {
         </Nav.Item>
       </Nav>
 
-      <div>
-        {DUMMY_POSTS.map((post, idx) => (
-          <div key={post.id} style={{ marginBottom: 24 }}>
-            <Card className="text-start mb-2" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
-              <Card.Body>
-                <Card.Title style={{ fontSize: 18 }}>
-                  {post.author}
-                </Card.Title>
-                <Card.Text>
-                  {post.content}
-                </Card.Text>
-              </Card.Body>
-            </Card>
-            {idx !== DUMMY_POSTS.length - 1 && (
-              <hr style={{ margin: '12px 0' }} />
-            )}
-          </div>
-        ))}
-      </div>
-
-      <div
-        style={{
-          position: 'fixed',
-          right: 40,
-          bottom: 40,
-          zIndex: 1000,
-          width: 48,
-          height: 48,
-        }}
-      >
-        <AddClubFormModal onAddClub={handleAddClub} />
+      <div style={{ textAlign: 'center', color: '#666' }}>
+        No posts yet.
       </div>
     </Container>
   );
