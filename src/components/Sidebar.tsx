@@ -6,7 +6,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  HouseFill, FilePersonFill, Search, PencilSquare, PersonFillGear, PeopleFill,
+  HouseFill, FilePersonFill, Search, PencilSquare, PersonFillGear,
 } from 'react-bootstrap-icons';
 
 const Sidebar = () => {
@@ -57,12 +57,6 @@ const Sidebar = () => {
             </li>
           </>
         )}
-        <li>
-          <Link href="/test">
-            <span><PeopleFill /></span>
-            Test
-          </Link>
-        </li>
         {/* Admin Only Link */}
         {currentUser && role === 'ADMIN' && (
           <li>
