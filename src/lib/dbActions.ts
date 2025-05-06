@@ -3,6 +3,7 @@
 import { Stuff, Condition } from '@prisma/client';
 import { hash } from 'bcrypt';
 import { redirect } from 'next/navigation';
+import router from 'next/router';
 import { prisma } from './prisma';
 
 /**
@@ -112,7 +113,23 @@ export async function likePost(id: number) {
     // redirect('/home');
   } catch (error) {
     console.error('Failed to like post:', error);
-    throw error;
+    router.push('/home');
+  }
+}
+
+export async function CommentPost(id: number, user: string, comment: string) {
+  try {
+    if (!comment || comment.trim() === '') {
+      throw new Error('Comment cannot be empty');
+    }
+    const combinedComment = `${user}: ${comment}`;
+    await prisma.post.update({
+      where: { id: Number(id) },
+      data: { comments: { push: combinedComment } },
+    });
+  } catch (error) {
+    console.error('Failed to add comment:', error);
+    redirect('/home');
   }
 }
 
