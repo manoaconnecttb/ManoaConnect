@@ -6,16 +6,11 @@
 import { useState } from 'react';
 import { Card, Image, Button, Col } from 'react-bootstrap';
 import { HeartFill } from 'react-bootstrap-icons';
-import Link from 'next/link';
 import { Post } from '@/lib/validationSchemas';
-import { HandThumbsUp, Chat } from 'react-bootstrap-icons';
 
-
-=======
 const PostCard = ({ post }: { post: Post }) => {
   const [likes, setLikes] = useState(post.likes);
   const [isLiking, setIsLiking] = useState(false);
->>>>>>> main
 
   const handleLike = async () => {
     setIsLiking(true);
@@ -51,17 +46,18 @@ const PostCard = ({ post }: { post: Post }) => {
       </Card.Body>
       <Card.Footer>
         <Col>
-          <Button variant="outline-primary" onClick={handleLike} disabled={isLiking}>
+          <Button
+            variant="outline-primary"
+            onClick={handleLike}
+            disabled={isLiking}
+            style={{ color: '#024731', borderColor: '#024731' }}
+          >
             <HeartFill />
+            {' '}
             Like
+            {' '}
             {likes}
           </Button>
-        </Col>
-        <Col>
-          <Link href="/home" className="text-blue-500 hover:underline">
-            Comment
-            {post.comments.length}
-          </Link>
         </Col>
       </Card.Footer>
     </Card>

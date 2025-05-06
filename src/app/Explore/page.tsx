@@ -32,7 +32,7 @@ const ExplorePage = async () => {
         <Row>
           <Col>
             <h1 className="text-center" style={{ color: '#024731', fontWeight: 'bold' }}>Explore Posts</h1>
-            <Link href="/home" className="no-underline hover:no-underline text-[#024731]">
+            <Link href="/test" className="no-underline hover:no-underline text-[#024731]">
               Explore Clubs
             </Link>
             <div className="p-3" style={{ backgroundColor: '#f8f9fa', borderRadius: '10px' }}>
@@ -55,7 +55,7 @@ const ExplorePage = async () => {
                     {` ${session?.user?.email}`}
                   </h3>
                 </Col>
-                <Col className="text-center py-3">
+                <Col className="text-center py-3 justify-content-end d-flex">
                   <a
                     href="/post"
                     style={{
@@ -72,22 +72,7 @@ const ExplorePage = async () => {
                   >
                     Create Post
                   </a>
-                  <a
-                    href="/clubs"
-                    style={{
-                      marginRight: '20px',
-                      backgroundColor: '#024731',
-                      color: 'white',
-                      border: 'none',
-                      padding: '10px 20px',
-                      borderRadius: '5px',
-                      textDecoration: 'none',
-                      display: 'inline-block',
-                      textAlign: 'center',
-                    }}
-                  >
-                    Add a Club
-                  </a>
+
                 </Col>
               </Row>
             </div>
