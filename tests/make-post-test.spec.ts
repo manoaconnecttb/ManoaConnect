@@ -5,7 +5,7 @@ test.use({
 });
 
 test('Admin Pages', async ({ page }) => {
-  await page.goto('https://manoa-connect.vercel.app/post');
+  await page.goto('http://localhost:3000/post');
   await expect(page.getByRole('heading', { name: 'Title' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Image' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Content' })).toBeVisible();
@@ -15,7 +15,7 @@ test('Admin Pages', async ({ page }) => {
   await page.fill('input[name="Image"]', 'testing image');
   await page.fill('input[name="Content"]', 'testing content');
   await page.click('button:has-text("Submit")');
-  await page.goto('https://manoa-connect.vercel.app/home');
+  await page.goto('http://localhost:3000/home');
   await expect(page.locator('text=testing title')).toBeVisible();
   await expect(page.locator('text=testing content')).toBeVisible();
 });
