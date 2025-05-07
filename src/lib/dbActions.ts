@@ -112,8 +112,37 @@ export async function likePost(id: number) {
     // redirect('/home');
   } catch (error) {
     console.error('Failed to like post:', error);
-    throw error;
+    redirect('/home');
   }
+}
+
+export async function CommentPost(id: number, user: string, comment: string) {
+  try {
+    if (!comment || comment.trim() === '') {
+      throw new Error('Comment cannot be empty');
+    }
+    const combinedComment = `${user}: ${comment}`;
+    await prisma.post.update({
+      where: { id: Number(id) },
+      data: { comments: { push: combinedComment } },
+    });
+  } catch (error) {
+    console.error('Failed to add comment:', error);
+    redirect('/home');
+  }
+}
+
+/**
+ * Deletes an existing stuff from the database.
+ * @param id, the id of the stuff to delete.
+ */
+export async function deletePost(id: number) {
+  // console.log(`deleteStuff id: ${id}`);
+  await prisma.post.delete({
+    where: { id },
+  });
+  // After deleting, redirect to the admin page
+  redirect('/admin');
 }
 
 export async function makeClub(club: {
@@ -136,6 +165,29 @@ export async function makeClub(club: {
 export async function getAllClubs() {
   return prisma.club.findMany({
     orderBy: { createdAt: 'desc' },
+  });
+}
+export async function updateClub(id: number, club: {
+  name: string;
+  description: string;
+  creator: string;
+  email: string;
+  image: string;
+}) {
+  await prisma.club.update({
+    where: { id },
+    data: {
+      name: club.name,
+      description: club.description,
+      creator: club.creator,
+      email: club.email,
+      image: club.image,
+    },
+  });
+}
+export async function deleteClub(id: number) {
+  await prisma.club.delete({
+    where: { id },
   });
 }
 /**
