@@ -6,7 +6,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  HouseFill, FilePersonFill, PencilSquare, PersonFillGear, PersonBoundingBox, People,
+
 } from 'react-bootstrap-icons';
 
 const Sidebar = () => {
@@ -48,20 +48,12 @@ const Sidebar = () => {
           </Link>
         </li>
         {currentUser && (
-          <>
-            <li>
-              <Link href="/following" className={pathName === '/following' ? 'active' : ''}>
-                <span><FilePersonFill /></span>
-                Following
-              </Link>
-            </li>
-            <li>
-              <Link href="/feedback" className={pathName === '/feedback' ? 'active' : ''}>
-                <span><PencilSquare /></span>
-                Feedback
-              </Link>
-            </li>
-          </>
+          <li>
+            <Link href="/feedback" className={pathName === '/feedback' ? 'active' : ''}>
+              <span><PencilSquare /></span>
+              Feedback
+            </Link>
+          </li>
         )}
         {/* Admin Only Link */}
         {currentUser && role === 'ADMIN' && (
