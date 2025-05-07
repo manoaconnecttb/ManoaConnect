@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import ClubCard from '@/components/ClubCard';
+import ClubCardAdmin from '@/components/ClubCard';
 import FeedbackAdmin from '@/components/FeedbackAdmin';
 import PostCardAdmin from '@/components/PostCardAdmin';
 import authOptions from '@/lib/authOptions';
@@ -78,7 +78,7 @@ const AdminPage = async () => {
         </Row>
         <Row className="gy-4">
           {clubs.map((club) => (
-            <ClubCard club={club} />
+            <ClubCardAdmin club={club} />
           ))}
         </Row>
 
