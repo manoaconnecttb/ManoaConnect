@@ -46,7 +46,12 @@ const PostCard = ({ post }: { post: Post }) => {
       </Card.Body>
       <Card.Footer>
         <Col>
-          <Button variant="outline-primary" onClick={handleLike} disabled={isLiking}>
+          <Button
+            variant="outline-primary"
+            onClick={handleLike}
+            disabled={isLiking}
+            style={{ color: '#024731', borderColor: '#024731' }}
+          >
             <HeartFill />
             {' '}
             Like
