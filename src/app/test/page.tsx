@@ -5,9 +5,14 @@ import { Container, Row, Col } from 'react-bootstrap';
 import AddClubFormModal, { ClubData } from '@/components/AddClubFormModal';
 import ClubCard from '@/components/ClubCard';
 import { makeClub, getAllClubs } from '@/lib/dbActions';
+import Link from 'next/link';
+
+interface ClubWithId extends ClubData {
+  id: number;
+}
 
 const TestPage: React.FC = () => {
-  const [clubs, setClubs] = useState<ClubData[]>([]);
+  const [clubs, setClubs] = useState<ClubWithId[]>([]);
 
   // Fetch all clubs on mount
   useEffect(() => {
@@ -26,19 +31,31 @@ const TestPage: React.FC = () => {
   };
 
   return (
-    <Container className="py-4">
-      <h2 className="mb-4">Test ClubCard Creation</h2>
-
-      {/* Add Club Modal */}
-      <AddClubFormModal onAddClub={handleAddClub} />
-
+    <Container fluid className="py-4" style={{ margin: '50px auto', maxWidth: '1400px' }}>
+      <h1 className="text-center" style={{ color: '#024731', fontWeight: 'bold' }}>Explore Clubs</h1>
+      <Row>
+        <Col>
+          <div className="mt-3">
+            <Link href="/Explore" className="no-underline hover:no-underline text-[#024731]">
+              Explore Posts
+            </Link>
+          </div>
+        </Col>
+        <Col className="justify-content-end d-flex">
+          <h5 className="p-3" style={{ color: '#024731', fontWeight: 'bold' }}>Create a Club</h5>
+          {/* Add Club Modal */}
+          <AddClubFormModal onAddClub={handleAddClub} />
+        </Col>
+      </Row>
       {/* Display Club Cards */}
       <Row className="mt-4">
-        {clubs.map((club) => (
-          <Col key={club.name + club.email} md={4} className="mb-4">
-            <ClubCard club={club} />
-          </Col>
-        ))}
+        {clubs
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map((club) => (
+            <Col key={club.name + club.email} md={4} className="mb-4">
+              <ClubCard club={club} />
+            </Col>
+          ))}
       </Row>
     </Container>
   );

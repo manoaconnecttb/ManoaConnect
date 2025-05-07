@@ -52,7 +52,7 @@ const SignUp = () => {
             <Card>
               <Card.Body>
                 <Form onSubmit={handleSubmit(onSubmit)}>
-                  <Form.Group className="form-grou
+                  <Form.Group className="form-group">
                     <Form.Label>Email</Form.Label>
                     <input
                       type="text"
@@ -61,6 +61,7 @@ const SignUp = () => {
                     />
                     <div className="invalid-feedback">{errors.email?.message}</div>
                   </Form.Group>
+
                   <Form.Group className="form-group">
                     <Form.Label>Password</Form.Label>
                     <input
