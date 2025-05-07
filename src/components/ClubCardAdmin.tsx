@@ -12,45 +12,36 @@ interface ClubCardProps {
   club: ClubData & { id: number };
 }
 
-const ClubCard: React.FC<ClubCardProps> = ({ club }) => {
+const ClubCardAdmin: React.FC<ClubCardProps> = ({ club }) => {
   const { data: session } = useSession();
   const currentUser = session?.user?.email;
   const userWithRole = session?.user as { email: string; randomKey: string };
   const role = userWithRole?.randomKey;
 
   return (
-    <Card className="h-100 position-relative">
-      <Card.Img
-        variant="top"
-        src={club.image}
-        style={{
-          height: '200px',
-          width: '100%',
-          objectFit: 'cover',
-        }}
-      />
-
-      {/* Admin Only Link */}
-      {currentUser && role === 'ADMIN' && (
+    <Card className="h-100 position-relative" style={{ maxWidth: '250px', maxHeight: '200px', fontSize: '0.75rem' }}>
+      <Card.Header>
+        <Card.Img src={club.image} alt="Club Image" width={50} />
+        <Card.Title>
+          {club.name.slice(0, 15)}
+          ...
+        </Card.Title>
+        <Card.Subtitle>{club.creator}</Card.Subtitle>
+        {/* Admin Only Link */}
+        {currentUser && role === 'ADMIN' && (
         <Button variant="danger" onClick={() => deleteClub(club.id)}>
           <Trash />
         </Button>
-      )}
+        )}
+      </Card.Header>
       <Card.Body>
-        <Card.Title>{club.name}</Card.Title>
-        <Card.Text>{club.description}</Card.Text>
-        <small className="text-muted">
-          Created by:
-          <br />
-          {club.creator}
-          <br />
-          (
-          {club.email}
-          )
-        </small>
+        <Card.Text>
+          {club.description.slice(0, 30)}
+          ...
+        </Card.Text>
       </Card.Body>
     </Card>
   );
 };
 
-export default ClubCard;
+export default ClubCardAdmin;
