@@ -5,7 +5,7 @@ test.use({
 });
 
 test('Admin Pages', async ({ page }) => {
-  await page.goto('http://127.0.0.1:3000/admin');
+  await page.goto('http://localhost:3000/admin');
   await expect(page.getByRole('heading', { name: 'Feedback' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Name' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Response' })).toBeVisible();
