@@ -41,12 +41,6 @@ const Sidebar = () => {
             Explore
           </Link>
         </li>
-        <li>
-          <Link href="/test">
-            <span><Search /></span>
-            Explore
-          </Link>
-        </li>
         {currentUser && (
           <>
             <li>
