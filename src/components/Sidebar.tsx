@@ -44,12 +44,6 @@ const Sidebar = () => {
         {currentUser && (
           <>
             <li>
-              <Link href="/following" className={pathName === '/following' ? 'active' : ''}>
-                <span><FilePersonFill /></span>
-                Following
-              </Link>
-            </li>
-            <li>
               <Link href="/feedback" className={pathName === '/feedback' ? 'active' : ''}>
                 <span><PencilSquare /></span>
                 Feedback
