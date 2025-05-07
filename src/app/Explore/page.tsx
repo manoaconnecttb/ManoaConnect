@@ -20,11 +20,7 @@ const ExplorePage = async () => {
       // eslint-disable-next-line @typescript-eslint/comma-dangle
     } | null,
   );
-  const owner = (session && session.user && session.user.email) || '';
   const posts = await prisma.post.findMany({
-    where: {
-      owner,
-    },
   });
   // console.log(stuff);
   return (
