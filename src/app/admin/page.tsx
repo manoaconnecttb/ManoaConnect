@@ -78,7 +78,7 @@ const AdminPage = async () => {
         </Row>
         <Row className="gy-4">
           {clubs.map((club) => (
-            <ClubCard key={club.id} club={club} />
+            <ClubCard club={club} />
           ))}
         </Row>
 
