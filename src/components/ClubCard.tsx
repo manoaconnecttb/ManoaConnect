@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
+import EditClubModal from '@/components/EditClubModal';
 import { ClubData } from './AddClubFormModal';
-import EditClubModal from './EditClubModal'; // <-- You must implement this modal
 
 interface ClubCardProps {
   club: ClubData & { id: number };
@@ -38,7 +38,6 @@ const ClubCard: React.FC<ClubCardProps> = ({ club }) => {
           />
         </Link>
 
-        {/* Edit Icon in top-right */}
         <Button
           variant="light"
           size="sm"
@@ -53,20 +52,24 @@ const ClubCard: React.FC<ClubCardProps> = ({ club }) => {
             zIndex: 10,
           }}
         >
-          <i className="bi bi-pencil"></i>
+          <i className="bi bi-pencil" />
         </Button>
 
         <Card.Body>
           <Card.Title>{club.name}</Card.Title>
           <Card.Text>{club.description}</Card.Text>
           <small className="text-muted">
-            Created by:<br />
-            {club.creator}<br />({club.email})
+            Created by:
+            <br />
+            {club.creator}
+            <br />
+            (
+            {club.email}
+            )
           </small>
         </Card.Body>
       </Card>
 
-      {/* Edit modal appears when clicking pencil */}
       {showEdit && (
         <EditClubModal
           show={showEdit}
