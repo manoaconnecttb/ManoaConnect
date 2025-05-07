@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
+import { PencilFill } from 'react-bootstrap-icons';
 import EditClubModal from '@/components/EditClubModal';
 import { ClubData } from './AddClubFormModal';
 
@@ -52,7 +53,7 @@ const ClubCard: React.FC<ClubCardProps> = ({ club }) => {
             zIndex: 10,
           }}
         >
-          <i className="bi bi-pencil" />
+          <PencilFill />
         </Button>
 
         <Card.Body>
