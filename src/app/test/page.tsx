@@ -31,7 +31,7 @@ const TestPage: React.FC = () => {
   };
 
   return (
-    <Container fluid className="py-4" style={{ margin: '50px auto', maxWidth: '1600px' }}>
+    <Container fluid className="py-4" style={{ margin: '50px auto', maxWidth: '1400px' }}>
       <h1 className="text-center" style={{ color: '#024731', fontWeight: 'bold' }}>Explore Clubs</h1>
       <Row>
         <Col>

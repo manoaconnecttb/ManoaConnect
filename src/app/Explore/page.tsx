@@ -40,7 +40,6 @@ const ExplorePage = async () => {
             <div className="p-3" style={{ backgroundColor: '#f8f9fa', borderRadius: '10px' }}>
               <Row>
                 <Col className="d-flex align-items-center">
-                  // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={session?.user?.image || '/profilePicDefault.jpg'}
                     alt="Profile"
