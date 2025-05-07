@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import ClubCardAdmin from '@/components/ClubCardAdmin';
 import FeedbackAdmin from '@/components/FeedbackAdmin';
 import PostCardAdmin from '@/components/PostCardAdmin';
 import authOptions from '@/lib/authOptions';
@@ -72,6 +73,11 @@ const AdminPage = async () => {
         <Row className="gy-4">
           {posts.map((post) => (
             <PostCardAdmin key={post.id} post={post} />
+          ))}
+        </Row>
+        <Row className="gy-4">
+          {clubs.map((club) => (
+            <ClubCardAdmin club={club} />
           ))}
         </Row>
       </Container>
