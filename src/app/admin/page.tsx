@@ -27,6 +27,7 @@ const AdminPage = async () => {
   const feedback = await prisma.feedback.findMany({});
   const users = await prisma.user.findMany({});
   const posts = await prisma.post.findMany({});
+  const clubs = await prisma.club.findMany({});
 
   return (
     <main>
