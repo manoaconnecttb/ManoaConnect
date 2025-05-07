@@ -6,7 +6,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-
+  HouseFill, FilePersonFill, PencilSquare, PersonFillGear, PersonBoundingBox, People,
 } from 'react-bootstrap-icons';
 
 const Sidebar = () => {
