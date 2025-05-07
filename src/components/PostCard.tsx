@@ -6,7 +6,6 @@
 import { useState } from 'react';
 import { Card, Image, Button, Col } from 'react-bootstrap';
 import { HeartFill } from 'react-bootstrap-icons';
-import Link from 'next/link';
 import { Post } from '@/lib/validationSchemas';
 import { HandThumbsUp, Chat } from 'react-bootstrap-icons';
 
@@ -50,15 +49,11 @@ const PostCard = ({ post }: { post: Post }) => {
         <Col>
           <Button variant="outline-primary" onClick={handleLike} disabled={isLiking}>
             <HeartFill />
+            {' '}
             Like
+            {' '}
             {likes}
           </Button>
-        </Col>
-        <Col>
-          <Link href="/home" className="text-blue-500 hover:underline">
-            Comment
-            {post.comments.length}
-          </Link>
         </Col>
       </Card.Footer>
     </Card>

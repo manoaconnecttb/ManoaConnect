@@ -110,5 +110,6 @@ const ExplorePage = async () => {
     </main>
   );
 };
+// comment out the above code and uncomment the below code to test the page
 
 export default ExplorePage;
