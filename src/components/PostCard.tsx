@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Card, Image, Button, Col } from 'react-bootstrap';
 import { HeartFill } from 'react-bootstrap-icons';
 import { Post } from '@/lib/validationSchemas';
+import { likePost } from '@/lib/dbActions';
 
 const PostCard = ({ post }: { post: Post }) => {
   const [likes, setLikes] = useState(post.likes);
@@ -13,18 +14,12 @@ const PostCard = ({ post }: { post: Post }) => {
 
   const handleLike = async () => {
     console.log('Liking post...');
-    if (isLiking) return; // Prevent multiple clicks
     setIsLiking(true);
     try {
-      const res = await fetch(`/api/posts/${post.id}/like`, { method: 'POST' });
-      if (res.ok) {
-        const data = await res.json();
-        setLikes(data.likes);
-      } else {
-        console.error('Failed to like post');
-      }
-    } catch (err) {
-      console.error('Error liking post:', err);
+      await likePost(post.id); // assuming it succeeds
+      setLikes((prevLikes) => prevLikes + 1); // increment locally
+    } catch (error) {
+      console.error('Failed to like post:', error);
     } finally {
       setIsLiking(false);
     }
