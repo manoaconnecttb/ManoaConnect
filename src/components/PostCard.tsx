@@ -12,6 +12,8 @@ const PostCard = ({ post }: { post: Post }) => {
   const [isLiking, setIsLiking] = useState(false);
 
   const handleLike = async () => {
+    console.log('Liking post...');
+    if (isLiking) return; // Prevent multiple clicks
     setIsLiking(true);
     try {
       const res = await fetch(`/api/posts/${post.id}/like`, { method: 'POST' });
