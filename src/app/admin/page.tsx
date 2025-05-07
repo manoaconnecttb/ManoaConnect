@@ -72,11 +72,13 @@ const AdminPage = async () => {
           </Col>
         </Row>
         <Row className="gy-4">
+          <h1>posts</h1>
           {posts.map((post) => (
             <PostCardAdmin key={post.id} post={post} />
           ))}
         </Row>
-        <Row className="gy-4">
+        <Row className="gy-4 mt-3">
+          <h1>Clubs</h1>
           {clubs.map((club) => (
             <ClubCardAdmin club={club} />
           ))}
