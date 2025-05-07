@@ -5,7 +5,7 @@ test.use({
 });
 
 test('Landing Page', async ({ page }) => {
-  await page.goto('http://127.0.0.1:3000');
+  await page.goto('https://manoa-connect.vercel.app/');
   await expect(page.getByRole('heading', { name: 'Welcome to ManoaConnectTB' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Sign In To Get Started' })).toBeVisible();
 });
