@@ -19,7 +19,7 @@ const ClubCardAdmin: React.FC<ClubCardProps> = ({ club }) => {
   const role = userWithRole?.randomKey;
 
   return (
-    <Card className="h-100 position-relative" style={{ maxWidth: '250px', maxHeight: '200px', fontSize: '0.75rem' }}>
+    <Card className="h-100 position-relative" style={{ maxWidth: '50px', maxHeight: '30px' }}>
       <Card.Header>
         <Card.Img src={club.image} alt="Club Image" width={50} />
         <Card.Title>
