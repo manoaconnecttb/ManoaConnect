@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable import/extensions */
 import React from 'react';
 import { useSession } from 'next-auth/react';
