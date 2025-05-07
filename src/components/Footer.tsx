@@ -1,48 +1,91 @@
 import { Col, Container, Row } from 'react-bootstrap';
-import { Linkedin, Facebook, Twitter, Instagram } from 'react-bootstrap-icons';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 const Footer = () => (
   <footer style={{ backgroundColor: '#024731' }} className="mt-auto py-3">
     <Container>
       <Row>
-        {/* Column 1: Current Information */}
+        {/* Column 1: Project Info */}
         <Col style={{ backgroundColor: '#013d2e' }} className="text-center text-light py-2">
           Created by ICS Software Engineering Students at UH Manoa
           <br />
           University of Hawaii
           <br />
           Honolulu, HI 96822
-          <br />
         </Col>
 
-        {/* Column 2: Legal Information */}
+        {/* Column 2: Technical Contact */}
         <Col style={{ backgroundColor: '#013d2e' }} className="text-center text-light py-2">
-          <h5>Legal</h5>
-          <a href="#copyright" className="text-light">Copyright</a>
+          <h5>Technical Contact</h5>
+          For technical help, please contact:
           <br />
-          <a href="#cookies" className="text-light">Cookies</a>
-          <br />
-          <a href="#privacy-policy" className="text-light">Privacy Policy</a>
+          <a
+            href="https://www.linkedin.com/in/michaelpeterson80804/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-light"
+          >
+            Michael Peterson
+          </a>
         </Col>
 
-        {/* Column 3: Customer Support */}
+        {/* Column 3: Team LinkedIn Profiles (2 sub-columns) */}
         <Col style={{ backgroundColor: '#013d2e' }} className="text-center text-light py-2">
-          <h5>Customer Support</h5>
-          <a href="#faq" className="text-light">FAQ</a>
-          <br />
-          <a href="#contact-us" className="text-light">Contact Us</a>
-          <br />
-          <a href="mailto:support@example.com" className="text-light">manoacon@hawaii.edu</a>
-        </Col>
-
-        {/* Column 4: Social Media Links */}
-        <Col style={{ backgroundColor: '#013d2e' }} className="text-center text-light py-2">
-          <h5>Follow Us</h5>
-          <a href="#facebook" className="text-light me-2 px-2" style={{ fontSize: '1.2rem' }}><Facebook /></a>
-          <a href="#twitter" className="text-light me-2 px-2" style={{ fontSize: '1.2rem' }}><Twitter /></a>
-          <a href="#instagram" className="text-light me-2 px-2" style={{ fontSize: '1.2rem' }}><Instagram /></a>
-          <a href="#linkedin" className="text-light px-2" style={{ fontSize: '1.2rem' }}><Linkedin /></a>
+          <h5>Team Members</h5>
+          <Row>
+            <Col>
+              <a
+                href="https://www.linkedin.com/in/mateo-maramara/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-light d-block"
+              >
+                Mateo Maramara
+              </a>
+              <a
+                href="https://www.linkedin.com/in/zhongyu-zhang-0091a5345/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-light d-block"
+              >
+                Zhongyu Zhang
+              </a>
+              <a
+                href="https://ruichen12.github.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-light d-block"
+              >
+                Rui Chen
+              </a>
+            </Col>
+            <Col>
+              <a
+                href="https://www.linkedin.com/in/laurent-keith-villanueva/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-light d-block"
+              >
+                Keith Villanueva
+              </a>
+              <a
+                href="https://www.linkedin.com/in/andre-miller-62905b326/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-light d-block"
+              >
+                Andre Miler
+              </a>
+              <a
+                href="https://www.linkedin.com/in/michaelpeterson80804/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-light d-block"
+              >
+                Michael Peterson
+              </a>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </Container>
