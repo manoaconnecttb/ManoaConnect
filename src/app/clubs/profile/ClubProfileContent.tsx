@@ -62,7 +62,7 @@ const ClubProfileContent: React.FC = () => {
         <p>{description}</p>
       </div>
       <div className="text-center mt-4">
-        <Button variant="primary">Join Club</Button>
+        <Button variant="primary">Follow Club</Button>
       </div>
       <div className="text-center mt-4">
         <Button variant="primary" onClick={handleViewClub}>

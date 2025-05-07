@@ -49,6 +49,7 @@ model Club {
   creator     String
   email       String
   image       String
+  members     String[]  @default([])
   createdAt   DateTime @default(now())
 }
 model Post {
