@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { useSession } from 'next-auth/react';
 import { Card, Button } from 'react-bootstrap';
 import { PencilFill } from 'react-bootstrap-icons';
 import EditClubModal from '@/components/EditClubModal';
@@ -11,6 +12,10 @@ interface ClubCardProps {
 
 const ClubCard: React.FC<ClubCardProps> = ({ club }) => {
   const [showEdit, setShowEdit] = useState(false);
+  const { data: session } = useSession();
+  const currentUser = session?.user?.email;
+  const userWithRole = session?.user as { email: string; randomKey: string };
+  const role = userWithRole?.randomKey;
 
   return (
     <>
@@ -39,23 +44,25 @@ const ClubCard: React.FC<ClubCardProps> = ({ club }) => {
           />
         </Link>
 
-        <Button
-          variant="light"
-          size="sm"
-          onClick={() => setShowEdit(true)}
-          style={{
-            position: 'absolute',
-            top: 8,
-            right: 8,
-            borderRadius: '50%',
-            padding: '0.3rem 0.5rem',
-            boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
-            zIndex: 10,
-          }}
-        >
-          <PencilFill />
-        </Button>
-
+        {/* Admin Only Link */}
+        {currentUser && role === 'ADMIN' && (
+          <Button
+            variant="light"
+            size="sm"
+            onClick={() => setShowEdit(true)}
+            style={{
+              position: 'absolute',
+              top: 8,
+              right: 8,
+              borderRadius: '50%',
+              padding: '0.3rem 0.5rem',
+              boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
+              zIndex: 10,
+            }}
+          >
+            <PencilFill />
+          </Button>
+        )}
         <Card.Body>
           <Card.Title>{club.name}</Card.Title>
           <Card.Text>{club.description}</Card.Text>
