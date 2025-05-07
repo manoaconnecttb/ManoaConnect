@@ -4,11 +4,23 @@ import { Card } from 'react-bootstrap';
 import { ClubData } from './AddClubFormModal';
 
 interface ClubCardProps {
-  club: ClubData;
+  club: ClubData & { id: number };
 }
 
 const ClubCard: React.FC<ClubCardProps> = ({ club }) => (
-  <Link href="/clubs/profile" style={{ textDecoration: 'none', color: 'inherit' }}>
+  <Link
+    href={{
+      pathname: '/clubs/profile',
+      query: {
+        name: club.name,
+        description: club.description,
+        image: club.image,
+        creator: club.creator,
+        email: club.email,
+      },
+    }}
+    style={{ textDecoration: 'none', color: 'inherit' }}
+  >
     <Card className="h-100" role="button">
       <Card.Img
         variant="top"
@@ -20,17 +32,13 @@ const ClubCard: React.FC<ClubCardProps> = ({ club }) => (
         }}
       />
       <Card.Body>
-        <Card.Title>
-          {club.name}
-        </Card.Title>
-        <Card.Text>
-          {club.description}
-        </Card.Text>
+        <Card.Title>{club.name}</Card.Title>
+        <Card.Text>{club.description}</Card.Text>
         <small className="text-muted">
           Created by:
-          {' '}
+          <br />
           {club.creator}
-          {' '}
+          <br />
           (
           {club.email}
           )

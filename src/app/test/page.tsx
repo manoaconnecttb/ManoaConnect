@@ -6,8 +6,12 @@ import AddClubFormModal, { ClubData } from '@/components/AddClubFormModal';
 import ClubCard from '@/components/ClubCard';
 import { makeClub, getAllClubs } from '@/lib/dbActions';
 
+interface ClubWithId extends ClubData {
+  id: number;
+}
+
 const TestPage: React.FC = () => {
-  const [clubs, setClubs] = useState<ClubData[]>([]);
+  const [clubs, setClubs] = useState<ClubWithId[]>([]);
 
   // Fetch all clubs on mount
   useEffect(() => {
