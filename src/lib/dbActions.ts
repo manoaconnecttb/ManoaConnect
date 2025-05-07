@@ -132,6 +132,19 @@ export async function CommentPost(id: number, user: string, comment: string) {
   }
 }
 
+/**
+ * Deletes an existing stuff from the database.
+ * @param id, the id of the stuff to delete.
+ */
+export async function deletePost(id: number) {
+  // console.log(`deleteStuff id: ${id}`);
+  await prisma.post.delete({
+    where: { id },
+  });
+  // After deleting, redirect to the admin page
+  redirect('/admin');
+}
+
 export async function makeClub(club: {
   name: string;
   description: string;

@@ -1,9 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 import { getServerSession } from 'next-auth';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import FeedbackAdmin from '@/components/FeedbackAdmin';
 import { prisma } from '@/lib/prisma';
 import { adminProtectedPage } from '@/lib/page-protection';
 import authOptions from '@/lib/authOptions';
+import PostCardAdmin from '@/components/PostCardAdmin';
 
 const AdminPage = async () => {
   const session = await getServerSession(authOptions);
@@ -14,6 +16,7 @@ const AdminPage = async () => {
   );
   const feedback = await prisma.feedback.findMany({});
   const users = await prisma.user.findMany({});
+  const posts = await prisma.post.findMany({});
 
   return (
     <main>
@@ -57,6 +60,12 @@ const AdminPage = async () => {
             </Table>
           </Col>
         </Row>
+        <Row className="gy-4">
+          {posts.map((post) => (
+            <PostCardAdmin key={post.id} post={post} />
+          ))}
+        </Row>
+
       </Container>
     </main>
   );
