@@ -154,6 +154,29 @@ export async function getAllClubs() {
     orderBy: { createdAt: 'desc' },
   });
 }
+export async function updateClub(id: number, club: {
+  name: string;
+  description: string;
+  creator: string;
+  email: string;
+  image: string;
+}) {
+  await prisma.club.update({
+    where: { id },
+    data: {
+      name: club.name,
+      description: club.description,
+      creator: club.creator,
+      email: club.email,
+      image: club.image,
+    },
+  });
+}
+export async function deleteClub(id: number) {
+  await prisma.club.delete({
+    where: { id },
+  });
+}
 /**
  * Creates a new user in the database.
  * @param credentials, an object with the following properties: email, password.
