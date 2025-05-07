@@ -7,8 +7,12 @@ import ClubCard from '@/components/ClubCard';
 import { makeClub, getAllClubs } from '@/lib/dbActions';
 import Link from 'next/link';
 
+interface ClubWithId extends ClubData {
+  id: number;
+}
+
 const TestPage: React.FC = () => {
-  const [clubs, setClubs] = useState<ClubData[]>([]);
+  const [clubs, setClubs] = useState<ClubWithId[]>([]);
 
   // Fetch all clubs on mount
   useEffect(() => {
