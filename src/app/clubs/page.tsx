@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Container, Row, Col, Nav, Card } from 'react-bootstrap';
 import AddClubFormModal, { ClubData } from '@/components/AddClubFormModal';
+import ClockIn from './clockin/page';
 
 const CLUB_AVATAR = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_2azfqh_qr52MOAohFAngj9TyxfdHFYG5Kw&s';
 const CLUB_NAME = 'QQ';
@@ -17,9 +18,45 @@ const DUMMY_POSTS = [
 
 const ClubsPage: React.FC = () => {
   const [clubs, setClubs] = useState<ClubData[]>([]);
+  const [activeTab, setActiveTab] = useState<string>('post'); // Track active tab
 
   const handleAddClub = (club: ClubData) => {
     setClubs([...clubs, club]);
+  };
+
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case 'post':
+        return (
+          <div>
+            {DUMMY_POSTS.map((post, idx) => (
+              <div key={post.id} style={{ marginBottom: 24 }}>
+                <Card className="text-start mb-2" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
+                  <Card.Body>
+                    <Card.Title style={{ fontSize: 18 }}>
+                      {post.author}
+                    </Card.Title>
+                    <Card.Text>
+                      {post.content}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+                {idx !== DUMMY_POSTS.length - 1 && (
+                  <hr style={{ margin: '12px 0' }} />
+                )}
+              </div>
+            ))}
+          </div>
+        );
+      case 'activity':
+        return <div>Activity content will go here.</div>;
+      case 'clockin':
+        return <ClockIn />;
+      case 'chat':
+        return <div>Chat content will go here.</div>;
+      default:
+        return <div>Select a tab</div>;
+    }
   };
 
   return (
@@ -34,7 +71,6 @@ const ClubsPage: React.FC = () => {
         maxWidth: 900,
       }}
     >
-
       <Row className="align-items-center mb-3">
         <Col xs="auto">
           <Link href="/clubs/profile" style={{ display: 'inline-block' }}>
@@ -60,6 +96,8 @@ const ClubsPage: React.FC = () => {
           </div>
           <div style={{ fontSize: 16, color: '#888' }}>
             Member:
+          </div>
+          <div style={{ fontSize: 16, color: '#888' }}>
             {MEMBER_COUNT}
           </div>
         </Col>
@@ -67,7 +105,12 @@ const ClubsPage: React.FC = () => {
 
       <hr />
 
-      <Nav variant="tabs" defaultActiveKey="post" className="mb-4">
+      <Nav
+        variant="tabs"
+        activeKey={activeTab}
+        onSelect={(selectedKey) => setActiveTab(selectedKey as string)}
+        className="mb-4"
+      >
         <Nav.Item>
           <Nav.Link eventKey="post">Post</Nav.Link>
         </Nav.Item>
@@ -82,25 +125,8 @@ const ClubsPage: React.FC = () => {
         </Nav.Item>
       </Nav>
 
-      <div>
-        {DUMMY_POSTS.map((post, idx) => (
-          <div key={post.id} style={{ marginBottom: 24 }}>
-            <Card className="text-start mb-2" style={{ boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
-              <Card.Body>
-                <Card.Title style={{ fontSize: 18 }}>
-                  {post.author}
-                </Card.Title>
-                <Card.Text>
-                  {post.content}
-                </Card.Text>
-              </Card.Body>
-            </Card>
-            {idx !== DUMMY_POSTS.length - 1 && (
-              <hr style={{ margin: '12px 0' }} />
-            )}
-          </div>
-        ))}
-      </div>
+      {/* Render the content based on the active tab */}
+      {renderTabContent()}
 
       <div
         style={{
