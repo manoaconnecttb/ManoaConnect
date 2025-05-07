@@ -82,7 +82,6 @@ const AdminPage = async () => {
           ))}
         </Row>
 
-
       </Container>
     </main>
   );
