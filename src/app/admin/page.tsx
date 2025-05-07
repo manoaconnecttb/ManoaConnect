@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import ClubCard from '@/components/ClubCard';
 import FeedbackAdmin from '@/components/FeedbackAdmin';
 import PostCardAdmin from '@/components/PostCardAdmin';
 import authOptions from '@/lib/authOptions';
@@ -27,7 +26,6 @@ const AdminPage = async () => {
   const feedback = await prisma.feedback.findMany({});
   const users = await prisma.user.findMany({});
   const posts = await prisma.post.findMany({});
-  const clubs = await prisma.club.findMany({});
 
   return (
     <main>
@@ -76,12 +74,6 @@ const AdminPage = async () => {
             <PostCardAdmin key={post.id} post={post} />
           ))}
         </Row>
-        <Row className="gy-4">
-          {clubs.map((club) => (
-            <ClubCard club={club} />
-          ))}
-        </Row>
-
       </Container>
     </main>
   );
