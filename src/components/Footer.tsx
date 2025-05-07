@@ -51,7 +51,7 @@ const Footer = () => (
                 Zhongyu Zhang
               </a>
               <a
-                href="https://ruichen12.github.io/"
+                href="https://www.linkedin.com/in/rui-chen-04679b292/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-light d-block"
