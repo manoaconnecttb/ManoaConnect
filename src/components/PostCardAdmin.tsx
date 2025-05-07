@@ -17,7 +17,7 @@ const PostCardAdmin = ({ post }: { post: Post }) => {
   return (
     <Card style={{ maxWidth: '250px', maxHeight: '200px', fontSize: '0.75rem' }}>
       <Card.Header>
-        <Image src={post.image} alt="Post Image" width={50} />
+        <Image src={post.image} alt="Post Image" style={{ maxWidth: '50px', maxHeight: '30px' }} />
         <Card.Title>
           {post.title.slice(0, 15)}
           ...
