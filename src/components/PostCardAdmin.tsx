@@ -19,7 +19,8 @@ const PostCardAdmin = ({ post }: { post: Post }) => {
       <Card.Header>
         <Image src={post.image} alt="Post Image" width={50} />
         <Card.Title>
-          {post.title.slice(0, 14)}
+          {post.title.slice(0, 15)}
+          ...
         </Card.Title>
         <Card.Subtitle>
           {post.author}
@@ -31,6 +32,7 @@ const PostCardAdmin = ({ post }: { post: Post }) => {
       <Card.Body>
         <Card.Text>
           {post.content.slice(0, 30)}
+          ...
         </Card.Text>
       </Card.Body>
     </Card>
