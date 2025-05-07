@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { Card, Image, Button, Col } from 'react-bootstrap';
 import { HeartFill } from 'react-bootstrap-icons';
 import { Post } from '@/lib/validationSchemas';
-import { HandThumbsUp, Chat } from 'react-bootstrap-icons';
 
 const PostCard = ({ post }: { post: Post }) => {
   const [likes, setLikes] = useState(post.likes);
