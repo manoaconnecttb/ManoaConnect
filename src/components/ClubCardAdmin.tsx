@@ -23,7 +23,7 @@ const ClubCardAdmin: React.FC<ClubCardProps> = ({ club }) => {
       <Card.Header>
         <Card.Img src={club.image} alt="Club Image" style={{ maxWidth: '50px', maxHeight: '30px' }} />
         <Card.Title>
-          {club.name.slice(0, 15)}
+          {club.name.slice(0, 12)}
           ...
         </Card.Title>
         <Card.Subtitle>{club.creator}</Card.Subtitle>
