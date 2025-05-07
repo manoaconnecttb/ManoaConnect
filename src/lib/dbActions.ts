@@ -112,7 +112,23 @@ export async function likePost(id: number) {
     // redirect('/home');
   } catch (error) {
     console.error('Failed to like post:', error);
-    throw error;
+    redirect('/home');
+  }
+}
+
+export async function CommentPost(id: number, user: string, comment: string) {
+  try {
+    if (!comment || comment.trim() === '') {
+      throw new Error('Comment cannot be empty');
+    }
+    const combinedComment = `${user}: ${comment}`;
+    await prisma.post.update({
+      where: { id: Number(id) },
+      data: { comments: { push: combinedComment } },
+    });
+  } catch (error) {
+    console.error('Failed to add comment:', error);
+    redirect('/home');
   }
 }
 

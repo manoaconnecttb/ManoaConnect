@@ -1,7 +1,6 @@
 'use client';
 
 /* eslint-disable import/extensions */
-// #TODO: Implement comments(hard) functionality
 
 import { useState } from 'react';
 import { Card, Image, Button, Col } from 'react-bootstrap';
