@@ -3,7 +3,6 @@
 import { Stuff, Condition } from '@prisma/client';
 import { hash } from 'bcrypt';
 import { redirect } from 'next/navigation';
-import router from 'next/router';
 import { prisma } from './prisma';
 
 /**
@@ -113,7 +112,7 @@ export async function likePost(id: number) {
     // redirect('/home');
   } catch (error) {
     console.error('Failed to like post:', error);
-    router.push('/home');
+    redirect('/home');
   }
 }
 
