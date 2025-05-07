@@ -20,8 +20,6 @@ const PostCard = ({ post }: { post: Post }) => {
       setLikes((prevLikes) => prevLikes + 1); // increment locally
     } catch (error) {
       console.error('Failed to like post:', error);
-    } finally {
-      setIsLiking(false);
     }
   };
   return (
