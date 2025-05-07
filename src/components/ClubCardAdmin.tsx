@@ -12,7 +12,7 @@ interface ClubCardProps {
   club: ClubData & { id: number };
 }
 
-const ClubCard: React.FC<ClubCardProps> = ({ club }) => {
+const ClubCardAdmin: React.FC<ClubCardProps> = ({ club }) => {
   const { data: session } = useSession();
   const currentUser = session?.user?.email;
   const userWithRole = session?.user as { email: string; randomKey: string };
@@ -21,7 +21,7 @@ const ClubCard: React.FC<ClubCardProps> = ({ club }) => {
   return (
     <Card className="h-100 position-relative" style={{ maxWidth: '250px', maxHeight: '200px', fontSize: '0.75rem' }}>
       <Card.Header>
-        <Card.Img src={club.image} alt="Post Image" width={50} />
+        <Card.Img src={club.image} alt="Club Image" width={50} />
         <Card.Title>
           {club.name.slice(0, 15)}
           ...
@@ -44,4 +44,4 @@ const ClubCard: React.FC<ClubCardProps> = ({ club }) => {
   );
 };
 
-export default ClubCard;
+export default ClubCardAdmin;
