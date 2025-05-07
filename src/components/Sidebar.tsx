@@ -6,7 +6,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  HouseFill, FilePersonFill, Search, PencilSquare, PersonFillGear,
+  HouseFill, FilePersonFill, PencilSquare, PersonFillGear, PersonBoundingBox, People,
 } from 'react-bootstrap-icons';
 
 const Sidebar = () => {
@@ -37,8 +37,14 @@ const Sidebar = () => {
         </li>
         <li>
           <Link href="/Explore">
-            <span><Search /></span>
-            Explore
+            <span><PersonBoundingBox /></span>
+            Explore Posts
+          </Link>
+        </li>
+        <li>
+          <Link href="/test">
+            <span><People /></span>
+            Explore Clubs
           </Link>
         </li>
         {currentUser && (

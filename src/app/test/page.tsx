@@ -5,7 +5,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 import AddClubFormModal, { ClubData } from '@/components/AddClubFormModal';
 import ClubCard from '@/components/ClubCard';
 import { makeClub, getAllClubs } from '@/lib/dbActions';
-import Link from 'next/link';
 
 interface ClubWithId extends ClubData {
   id: number;
@@ -34,13 +33,7 @@ const TestPage: React.FC = () => {
     <Container fluid className="py-4" style={{ margin: '50px auto', maxWidth: '1400px' }}>
       <h1 className="text-center" style={{ color: '#024731', fontWeight: 'bold' }}>Explore Clubs</h1>
       <Row>
-        <Col>
-          <div className="mt-3">
-            <Link href="/Explore" className="no-underline hover:no-underline text-[#024731]">
-              Explore Posts
-            </Link>
-          </div>
-        </Col>
+
         <Col className="justify-content-end d-flex">
           <h5 className="p-3" style={{ color: '#024731', fontWeight: 'bold' }}>Create a Club</h5>
           {/* Add Club Modal */}
