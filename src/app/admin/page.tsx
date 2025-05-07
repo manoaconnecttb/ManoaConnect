@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import ClubCardAdmin from '@/components/ClubCard';
+import ClubCardAdmin from '@/components/ClubCardAdmin';
 import FeedbackAdmin from '@/components/FeedbackAdmin';
 import PostCardAdmin from '@/components/PostCardAdmin';
 import authOptions from '@/lib/authOptions';
