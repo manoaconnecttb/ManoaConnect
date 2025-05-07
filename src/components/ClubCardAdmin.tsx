@@ -21,7 +21,7 @@ const ClubCardAdmin: React.FC<ClubCardProps> = ({ club }) => {
   return (
     <Card style={{ maxWidth: '250px', maxHeight: '200px', fontSize: '0.75rem' }}>
       <Card.Header>
-        <Card.Img src={club.image} alt="Club Image" style={{ maxWidth: '50px', maxHeight: '30px'}} />
+        <Card.Img src={club.image} alt="Club Image" style={{ maxWidth: '50px', maxHeight: '30px' }} />
         <Card.Title>
           {club.name.slice(0, 15)}
           ...
