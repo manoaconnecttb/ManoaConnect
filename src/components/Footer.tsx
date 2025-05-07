@@ -1,5 +1,4 @@
 import { Col, Container, Row } from 'react-bootstrap';
-import { Linkedin, Facebook, Twitter, Instagram } from 'react-bootstrap-icons';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 const Footer = () => (
