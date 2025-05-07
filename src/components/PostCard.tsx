@@ -10,12 +10,9 @@ import Link from 'next/link';
 import { Post } from '@/lib/validationSchemas';
 import { HandThumbsUp, Chat } from 'react-bootstrap-icons';
 
-
-=======
 const PostCard = ({ post }: { post: Post }) => {
   const [likes, setLikes] = useState(post.likes);
   const [isLiking, setIsLiking] = useState(false);
->>>>>>> main
 
   const handleLike = async () => {
     setIsLiking(true);
