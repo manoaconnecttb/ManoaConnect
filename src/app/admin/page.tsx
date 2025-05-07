@@ -1,19 +1,28 @@
 /* eslint-disable @next/next/no-img-element */
+import FeedbackAdmin from '@/components/FeedbackAdmin';
+import PostCardAdmin from '@/components/PostCardAdmin';
+import authOptions from '@/lib/authOptions';
+import { adminProtectedPage } from '@/lib/page-protection';
+import { prisma } from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 import { Col, Container, Row, Table } from 'react-bootstrap';
-import FeedbackAdmin from '@/components/FeedbackAdmin';
-import { prisma } from '@/lib/prisma';
-import { adminProtectedPage } from '@/lib/page-protection';
-import authOptions from '@/lib/authOptions';
-import PostCardAdmin from '@/components/PostCardAdmin';
 
 const AdminPage = async () => {
   const session = await getServerSession(authOptions);
-  adminProtectedPage(
-    session as {
-      user: { email: string; id: string; randomKey: string };
-    } | null,
-  );
+  try {
+    adminProtectedPage(
+      session as {
+        user: { email: string; id: string; randomKey: string };
+      } | null,
+    );
+  } catch (err) {
+    return (
+      <main style={{ padding: '2rem', color: 'red' }}>
+        <h1>Access Denied</h1>
+        <p>You must be an admin to view this page.</p>
+      </main>
+    );
+  }
   const feedback = await prisma.feedback.findMany({});
   const users = await prisma.user.findMany({});
   const posts = await prisma.post.findMany({});
