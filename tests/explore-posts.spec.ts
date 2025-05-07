@@ -4,7 +4,7 @@ test.use({
   storageState: 'admin-auth.json',
 });
 
-test('Admin Pages', async ({ page }) => {
+test('Explore Posts Page', async ({ page }) => {
   await page.goto('http://localhost:3000/test');
   await expect(page.getByRole('heading', { name: 'Explore Clubs' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Create a Club' })).toBeVisible();

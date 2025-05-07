@@ -4,7 +4,7 @@ test.use({
   storageState: 'john-auth.json',
 });
 
-test('Admin Pages', async ({ page }) => {
+test('make Post Page', async ({ page }) => {
   await page.goto('http://localhost:3000/post');
   await expect(page.getByRole('heading', { name: 'Title' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Image' })).toBeVisible();
