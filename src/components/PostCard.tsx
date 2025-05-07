@@ -30,7 +30,7 @@ const PostCard = ({ post }: { post: Post }) => {
   return (
     <Card className="h-100">
       <Card.Header>
-        <Image src={post.image} alt="Post Image" width={365} />
+        <Image src={post.image} alt="Post Image" width={335} />
         <Card.Title>
           {post.title}
         </Card.Title>
