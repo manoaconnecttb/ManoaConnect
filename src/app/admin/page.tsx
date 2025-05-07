@@ -72,7 +72,7 @@ const AdminPage = async () => {
           </Col>
         </Row>
         <Row className="gy-4">
-          <h1>posts</h1>
+          <h1>Posts</h1>
           {posts.map((post) => (
             <PostCardAdmin key={post.id} post={post} />
           ))}
