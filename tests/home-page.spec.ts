@@ -5,6 +5,6 @@ test.use({
 });
 
 test('Home Page', async ({ page }) => {
-  await page.goto('https://manoa-connect.vercel.app/home');
+  await page.goto('http://127.0.0.1:3000/home');
   await expect(page.getByRole('heading', { name: 'Posts' })).toBeVisible();
 });
