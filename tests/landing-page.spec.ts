@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.use({ storageState: 'admin-auth.json' });
 
 test('Landing Page', async ({ page }) => {
-  await page.goto('http://localhost:3000/');
+  await page.goto('https://manoa-connect.vercel.app/');
   await page.waitForLoadState('domcontentloaded');
   await page.waitForLoadState('networkidle');
   await expect(page.getByRole('heading', { name: 'Welcome To ManoaConnectTB' })).toBeVisible();
