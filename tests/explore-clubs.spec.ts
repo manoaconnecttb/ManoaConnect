@@ -1,12 +1,11 @@
 import { test, expect } from '@playwright/test';
 
-test.use({
-  storageState: 'admin-auth.json',
-});
-
-test('Admin Pages', async ({ page }) => {
-  await page.goto('http://localhost:3000/Explore');
-  await expect(page.getByRole('heading', { name: 'Explore Posts' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Create Post' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Welcome' })).toBeVisible();
+test('Login with valid credentials', async ({ page }) => {
+  await page.goto('http://localhost:3000/auth/signin');
+  await page.locator('input[name="email"]').fill('admin@foo.com');
+  await page.locator('input[name="password"]').fill('changeme');
+  await Promise.all([
+    page.getByRole('button', { name: 'Sign In' }).click(),
+  ]);
+  await expect(page).toHaveURL('http://localhost:3000/home');
 });

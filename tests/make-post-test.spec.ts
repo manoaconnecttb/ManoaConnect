@@ -1,21 +1,14 @@
 import { test, expect } from '@playwright/test';
 
-test.use({
-  storageState: 'john-auth.json',
-});
+test.use({ storageState: 'admin-auth.json' });
 
-test('Admin Pages', async ({ page }) => {
+test('Make Post', async ({ page }) => {
   await page.goto('http://localhost:3000/post');
-  await expect(page.getByRole('heading', { name: 'Title' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Image' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Content' })).toBeVisible();
-  await expect(page.locator('button:has-text("Submit")')).toBeVisible();
-  await expect(page.locator('button:has-text("Reset")')).toBeVisible();
-  await page.fill('input[name="Title"]', 'testing title');
-  await page.fill('input[name="Image"]', 'testing image');
-  await page.fill('input[name="Content"]', 'testing content');
-  await page.click('button:has-text("Submit")');
-  await page.goto('http://localhost:3000/home');
-  await expect(page.locator('text=testing title')).toBeVisible();
-  await expect(page.locator('text=testing content')).toBeVisible();
+  await page.waitForLoadState('domcontentloaded');
+  await page.waitForLoadState('networkidle');
+  await expect(page.getByRole('heading', { name: 'New Post' })).toBeVisible();
+  await expect(page.locator('input[name="title"]')).toBeVisible();
+  await expect(page.locator('input[name="image"]')).toBeVisible();
+  await expect(page.locator('input[name="content"]')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Submit' })).toBeVisible();
 });

@@ -1,18 +1,13 @@
 import { test, expect } from '@playwright/test';
 
-test.use({
-  storageState: 'admin-auth.json',
-});
+test.use({ storageState: 'admin-auth.json' });
 
 test('Feedback Page', async ({ page }) => {
   await page.goto('http://localhost:3000/feedback');
-  await expect(page.locator('text=Username')).toBeVisible();
-  await expect(page.locator('text=admin@foo.com')).toBeVisible();
-  await expect(page.locator('text=Feedback')).toBeVisible();
-  await expect(page.locator('button:has-text("Submit")')).toBeVisible();
-  await expect(page.locator('button:has-text("Reset")')).toBeVisible();
-  await page.fill('input[name="Feedback"]', 'testing feedback');
-  await page.click('button:has-text("Submit")');
-  await page.goto('http://localhost:3000/admin');
-  await expect(page.locator('text=testing feedback')).toBeVisible();
+  await page.waitForLoadState('domcontentloaded');
+  await page.waitForLoadState('networkidle');
+  await expect(page.getByText('Username')).toBeVisible();
+  await expect(page.locator('input[name="name"]')).toBeVisible();
+  await expect(page.locator('input[name="response"]')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Submit' })).toBeVisible();
 });

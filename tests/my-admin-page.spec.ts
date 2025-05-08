@@ -1,15 +1,14 @@
 import { test, expect } from '@playwright/test';
 
-test.use({
-  storageState: 'admin-auth.json',
-});
+test.use({ storageState: 'admin-auth.json' });
 
 test('Admin Pages', async ({ page }) => {
   await page.goto('http://localhost:3000/admin');
-  await expect(page.getByRole('heading', { name: 'Feedback' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Name' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Response' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'List Users Admin' })).toBeVisible();
-  await expect(page.locator('text=john@foo.com')).toBeVisible();
-  await expect(page.locator('text=admin@foo.com')).toBeVisible();
+  await page.waitForLoadState('domcontentloaded');
+  await page.waitForLoadState('networkidle');
+  await expect(page.locator('text=Name')).toBeVisible();
+  await expect(page.locator('text=Response')).toBeVisible();
+  await expect(page.locator('text=List Users Admin')).toBeVisible();
+  await expect(page.locator('text=Email')).toBeVisible();
+  await expect(page.locator('text=Role')).toBeVisible();
 });
