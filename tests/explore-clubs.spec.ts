@@ -8,4 +8,5 @@ test('Login with valid credentials', async ({ page }) => {
     page.getByRole('button', { name: 'Sign In' }).click(),
   ]);
   await expect(page).toHaveURL('https://manoa-connect.vercel.app/home');
+  await page.context().storageState({ path: 'admin-auth.json' });
 });
